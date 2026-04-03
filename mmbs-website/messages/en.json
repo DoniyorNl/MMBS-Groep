@@ -1,0 +1,236 @@
+{
+  "nav": {
+    "diensten": "Services",
+    "projecten": "Projects",
+    "over": "About us",
+    "contact": "Contact",
+    "vacatures": "Vacancies",
+    "nieuws": "News",
+    "offerte": "Request a quote"
+  },
+  "hero": {
+    "headline": "Experts in brickwork,\nfacade renovation & scaffolding.",
+    "subline": "For businesses, housing corporations and contractors throughout the Netherlands.",
+    "cta_primary": "Request a quote",
+    "cta_secondary": "View projects",
+    "scroll_hint": "Scroll down"
+  },
+  "stats": {
+    "years": "20+",
+    "years_label": "Years of experience",
+    "projects": "1500+",
+    "projects_label": "Completed projects",
+    "professionals": "100+",
+    "professionals_label": "Specialists",
+    "clients": "500+",
+    "clients_label": "Satisfied clients"
+  },
+  "services": {
+    "title": "Our services",
+    "subtitle": "From brickwork to facade renovation — we offer complete solutions for every construction project.",
+    "read_more": "Learn more",
+    "all_services": "View all services",
+    "items": {
+      "metselwerk": {
+        "title": "Brickwork",
+        "short": "Expert brickwork for new builds and renovations.",
+        "description": "From foundations to facades: we deliver high-quality brickwork for both residential and commercial projects. With attention to detail and durable materials."
+      },
+      "gevelrenovatie": {
+        "title": "Facade renovation",
+        "short": "Restore and modernize your facade professionally.",
+        "description": "We renovate facades of all types of buildings, from houses to commercial properties. Including cleaning, repairs and coating."
+      },
+      "monumentale-restauratie": {
+        "title": "Monument restoration",
+        "short": "Specialist in restoring listed buildings.",
+        "description": "With craftsmanship and historical awareness, we restore listed buildings to their original state."
+      },
+      "isolatie": {
+        "title": "Insulation",
+        "short": "Energy-saving insulation solutions.",
+        "description": "Cavity wall insulation, external facade insulation and roof insulation for a warmer home and lower energy bills."
+      },
+      "steigerbouw": {
+        "title": "Scaffolding",
+        "short": "Safe and efficient scaffolding structures.",
+        "description": "We install and manage scaffolding for every type of project, from small renovations to large construction projects."
+      }
+    }
+  },
+  "projects": {
+    "title": "Our projects",
+    "subtitle": "A selection of our most recent and challenging realizations.",
+    "all_projects": "View all projects",
+    "filter_all": "All",
+    "filter_restauratie": "Restoration",
+    "filter_nieuwbouw": "New build",
+    "filter_renovatie": "Renovation",
+    "filter_isolatie": "Insulation",
+    "view_project": "View project",
+    "location": "Location",
+    "year": "Year",
+    "type": "Type"
+  },
+  "whyus": {
+    "title": "Why MMBS Group?",
+    "subtitle": "We distinguish ourselves through craftsmanship, speed and sustainability.",
+    "items": {
+      "vakmanschap": {
+        "title": "Craftsmanship",
+        "description": "More than 20 years of experience in construction. Our specialists are certified and work to the highest quality standards."
+      },
+      "snelheid": {
+        "title": "Speed",
+        "description": "We plan efficiently and deliver on time. Your project will never be delayed on our side."
+      },
+      "duurzaamheid": {
+        "title": "Sustainability",
+        "description": "We choose sustainable materials and methods, good for the environment and your wallet in the long run."
+      },
+      "kwaliteit": {
+        "title": "Quality",
+        "description": "Every project goes through a strict quality process. We always deliver what we promise — and more."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "What our clients say",
+    "subtitle": "More than 500 satisfied clients speak for themselves."
+  },
+  "cta": {
+    "title": "Ready to build together?",
+    "subtitle": "Request a no-obligation quote today. We respond within 24 hours.",
+    "button_primary": "Request a quote",
+    "button_secondary": "Get in touch",
+    "phone": "+31 30 686 5447",
+    "email": "info@mmbs.nl"
+  },
+  "about": {
+    "title": "About MMBS Group",
+    "subtitle": "More than 20 years leading in facade solutions.",
+    "story_title": "Our story",
+    "story": "MMBS Group was founded in 2003 in Utrecht with one clear goal: to deliver the highest quality in brickwork and facade solutions. What started as a small team of specialists, grew into one of the most respected players in the Dutch construction sector.",
+    "mission_title": "Our mission",
+    "mission": "We believe in sustainable construction, craftsmanship and personal attention for every client. From small renovations to large-scale restoration projects — MMBS Group guarantees quality and reliability.",
+    "team_title": "Our team",
+    "team_subtitle": "More than 100 certified specialists ready for your project.",
+    "certifications_title": "Certifications & quality marks"
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "We answer your question within 24 hours.",
+    "form_title": "Send us a message",
+    "name": "Name",
+    "name_placeholder": "Your full name",
+    "email": "Email address",
+    "email_placeholder": "your@email.com",
+    "phone": "Phone number",
+    "phone_placeholder": "+31 6 12 34 56 78",
+    "message": "Message",
+    "message_placeholder": "Describe your project or question...",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Thank you! We will contact you as soon as possible.",
+    "error": "Something went wrong. Please try again.",
+    "address_title": "Our address",
+    "address": "Strijkviertel 60, 3454 PP Utrecht",
+    "phone_label": "Phone",
+    "email_label": "Email",
+    "hours_title": "Opening hours",
+    "hours": "Monday — Friday: 07:00 — 17:00",
+    "calculator_title": "Calculate your quote",
+    "calculator_subtitle": "Get an immediate cost estimate for your project."
+  },
+  "calculator": {
+    "step1_title": "Select the service",
+    "step2_title": "Project details",
+    "step3_title": "Your details",
+    "surface_label": "Surface area (m²)",
+    "surface_placeholder": "E.g. 150",
+    "floors_label": "Number of floors",
+    "condition_label": "Condition of the work",
+    "condition_good": "Good",
+    "condition_fair": "Fair",
+    "condition_poor": "Poor",
+    "estimated_price": "Indicative price",
+    "price_disclaimer": "* This is an indicative price. Actual costs may vary based on a custom quote.",
+    "submit": "Request quote",
+    "next": "Next step",
+    "back": "Back",
+    "success": "Thank you for your request! We will contact you within 24 hours."
+  },
+  "vacatures": {
+    "title": "Work at MMBS Group",
+    "subtitle": "Join our team of more than 100 specialists.",
+    "open_positions": "Open positions",
+    "no_vacancies": "No open vacancies at the moment. Send us an open application.",
+    "apply": "Apply",
+    "open_application": "Open application",
+    "open_application_text": "No suitable vacancy? Send us your CV and motivation.",
+    "location": "Location",
+    "hours": "Hours",
+    "fulltime": "Full-time",
+    "parttime": "Part-time"
+  },
+  "nieuws": {
+    "title": "News & Updates",
+    "subtitle": "The latest news from MMBS Group.",
+    "read_more": "Read more",
+    "back": "Back to news",
+    "published": "Published on",
+    "categories": {
+      "company": "Company news",
+      "project": "Project",
+      "industry": "Industry"
+    }
+  },
+  "footer": {
+    "description": "Expert in brickwork, facade renovation, monument restoration, insulation and scaffolding. Based in Utrecht, active throughout the Netherlands.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy policy",
+    "terms": "Terms & conditions",
+    "copyright": "© {year} MMBS Group. All rights reserved.",
+    "kvk": "CoC: 12345678",
+    "social": {
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back",
+    "close": "Close",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "language": "Language",
+    "skip_to_content": "Skip to content"
+  },
+  "chatbot": {
+    "title": "MMBS Assistant",
+    "subtitle": "How can I help you?",
+    "placeholder": "Ask a question...",
+    "send": "Send",
+    "open": "Open chat",
+    "close": "Close chat",
+    "welcome": "Good day! I am the virtual assistant of MMBS Group. How can I help you with your construction project?"
+  },
+  "cookie": {
+    "title": "We use cookies",
+    "description": "We use cookies to improve your experience and analyze our website. By continuing, you agree to our privacy policy.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "learn_more": "Learn more"
+  },
+  "errors": {
+    "not_found_title": "Page not found",
+    "not_found_description": "The page you are looking for does not exist or has been moved.",
+    "not_found_button": "Go to homepage",
+    "error_title": "Something went wrong",
+    "error_description": "An unexpected error occurred. Please try refreshing the page.",
+    "error_button": "Try again"
+  }
+}

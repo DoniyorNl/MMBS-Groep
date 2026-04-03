@@ -1,0 +1,236 @@
+{
+  "nav": {
+    "diensten": "Diensten",
+    "projecten": "Projecten",
+    "over": "Over ons",
+    "contact": "Contact",
+    "vacatures": "Vacatures",
+    "nieuws": "Nieuws",
+    "offerte": "Offerte aanvragen"
+  },
+  "hero": {
+    "headline": "Experts in metselwerk,\ngevelrenovatie & steigerbouw.",
+    "subline": "Voor bedrijven, woningcorporaties en aannemers in heel Nederland.",
+    "cta_primary": "Vraag een offerte",
+    "cta_secondary": "Bekijk projecten",
+    "scroll_hint": "Scroll naar beneden"
+  },
+  "stats": {
+    "years": "20+",
+    "years_label": "Jaar ervaring",
+    "projects": "1500+",
+    "projects_label": "Voltooide projecten",
+    "professionals": "100+",
+    "professionals_label": "Vakspecialisten",
+    "clients": "500+",
+    "clients_label": "Tevreden opdrachtgevers"
+  },
+  "services": {
+    "title": "Onze diensten",
+    "subtitle": "Van metselwerk tot gevelrenovatie — wij bieden complete oplossingen voor elk bouwproject.",
+    "read_more": "Meer informatie",
+    "all_services": "Alle diensten bekijken",
+    "items": {
+      "metselwerk": {
+        "title": "Metselwerk",
+        "short": "Vakkundig metselwerk voor nieuwbouw en renovatie.",
+        "description": "Van fundering tot gevels: wij leveren hoogwaardig metselwerk voor zowel particuliere als commerciële projecten. Met oog voor detail en duurzame materialen."
+      },
+      "gevelrenovatie": {
+        "title": "Gevelrenovatie",
+        "short": "Herstel en moderniseer uw gevel professioneel.",
+        "description": "Wij renoveren gevels van alle typen gebouwen, van woonhuizen tot bedrijfspanden. Inclusief reiniging, herstel en coating."
+      },
+      "monumentale-restauratie": {
+        "title": "Monumentale restauratie",
+        "short": "Specialist in het restaureren van monumenten.",
+        "description": "Met vakmanschap en historisch besef herstellen wij monumentale panden naar hun oorspronkelijke staat."
+      },
+      "isolatie": {
+        "title": "Isolatie",
+        "short": "Energiebesparende isolatieoplossingen.",
+        "description": "Spouwmuurisolatie, buitengevelisolatie en dakisolatie voor een warmer huis en lagere energierekening."
+      },
+      "steigerbouw": {
+        "title": "Steigerbouw",
+        "short": "Veilige en efficiënte steigerconstructies.",
+        "description": "Wij plaatsen en beheren steigers voor elk type project, van kleine renovaties tot grote bouwprojecten."
+      }
+    }
+  },
+  "projects": {
+    "title": "Onze projecten",
+    "subtitle": "Een selectie van onze meest recente en uitdagende realisaties.",
+    "all_projects": "Alle projecten bekijken",
+    "filter_all": "Alle",
+    "filter_restauratie": "Restauratie",
+    "filter_nieuwbouw": "Nieuwbouw",
+    "filter_renovatie": "Renovatie",
+    "filter_isolatie": "Isolatie",
+    "view_project": "Bekijk project",
+    "location": "Locatie",
+    "year": "Jaar",
+    "type": "Type"
+  },
+  "whyus": {
+    "title": "Waarom MMBS Groep?",
+    "subtitle": "Wij onderscheiden ons door vakmanschap, snelheid en duurzaamheid.",
+    "items": {
+      "vakmanschap": {
+        "title": "Vakmanschap",
+        "description": "Meer dan 20 jaar ervaring in de bouw. Onze specialisten zijn gecertificeerd en werken met de hoogste kwaliteitsstandaarden."
+      },
+      "snelheid": {
+        "title": "Snelheid",
+        "description": "Wij plannen efficiënt en leveren op tijd. Uw project loopt nooit vertraging op door onze zijde."
+      },
+      "duurzaamheid": {
+        "title": "Duurzaamheid",
+        "description": "We kiezen voor duurzame materialen en methoden, goed voor het milieu én uw portemonnee op de lange termijn."
+      },
+      "kwaliteit": {
+        "title": "Kwaliteit",
+        "description": "Elk project doorloopt een strikt kwaliteitsproces. Wij leveren altijd wat we beloven — en meer."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Wat onze klanten zeggen",
+    "subtitle": "Meer dan 500 tevreden opdrachtgevers spreken voor zich."
+  },
+  "cta": {
+    "title": "Klaar om samen te bouwen?",
+    "subtitle": "Vraag vandaag nog een vrijblijvende offerte aan. Wij reageren binnen 24 uur.",
+    "button_primary": "Offerte aanvragen",
+    "button_secondary": "Neem contact op",
+    "phone": "+31 30 686 5447",
+    "email": "info@mmbs.nl"
+  },
+  "about": {
+    "title": "Over MMBS Groep",
+    "subtitle": "Meer dan 20 jaar toonaangevend in geveloplossingen.",
+    "story_title": "Ons verhaal",
+    "story": "MMBS Groep is in 2003 opgericht in Utrecht met één duidelijk doel: het leveren van de hoogste kwaliteit in metselwerk en geveloplossingen. Wat begon als een klein team van vakspecialisten, groeide uit tot een van de meest gerespecteerde spelers in de Nederlandse bouwsector.",
+    "mission_title": "Onze missie",
+    "mission": "Wij geloven in duurzaam bouwen, vakmanschap en persoonlijke aandacht voor elke opdrachtgever. Van kleine renovaties tot grootschalige restauratieprojecten — MMBS Groep staat garant voor kwaliteit en betrouwbaarheid.",
+    "team_title": "Ons team",
+    "team_subtitle": "Meer dan 100 gecertificeerde vakmensen klaar voor uw project.",
+    "certifications_title": "Certificeringen & keurmerken"
+  },
+  "contact": {
+    "title": "Neem contact op",
+    "subtitle": "Wij beantwoorden uw vraag binnen 24 uur.",
+    "form_title": "Stuur ons een bericht",
+    "name": "Naam",
+    "name_placeholder": "Uw volledige naam",
+    "email": "E-mailadres",
+    "email_placeholder": "uw@email.nl",
+    "phone": "Telefoonnummer",
+    "phone_placeholder": "+31 6 12 34 56 78",
+    "message": "Bericht",
+    "message_placeholder": "Beschrijf uw project of vraag...",
+    "send": "Verstuur bericht",
+    "sending": "Versturen...",
+    "success": "Bedankt! Wij nemen zo snel mogelijk contact met u op.",
+    "error": "Er is iets misgegaan. Probeer het opnieuw.",
+    "address_title": "Ons adres",
+    "address": "Strijkviertel 60, 3454 PP Utrecht",
+    "phone_label": "Telefoon",
+    "email_label": "E-mail",
+    "hours_title": "Openingstijden",
+    "hours": "Maandag — Vrijdag: 07:00 — 17:00",
+    "calculator_title": "Bereken uw offerte",
+    "calculator_subtitle": "Krijg direct een indicatie van de kosten voor uw project."
+  },
+  "calculator": {
+    "step1_title": "Selecteer de dienst",
+    "step2_title": "Projectdetails",
+    "step3_title": "Uw gegevens",
+    "surface_label": "Oppervlakte (m²)",
+    "surface_placeholder": "Bijv. 150",
+    "floors_label": "Aantal verdiepingen",
+    "condition_label": "Staat van het werk",
+    "condition_good": "Goed",
+    "condition_fair": "Matig",
+    "condition_poor": "Slecht",
+    "estimated_price": "Indicatieve prijs",
+    "price_disclaimer": "* Dit is een indicatieve prijs. De werkelijke kosten kunnen afwijken op basis van een maatwerk offerte.",
+    "submit": "Offerte aanvragen",
+    "next": "Volgende stap",
+    "back": "Terug",
+    "success": "Bedankt voor uw aanvraag! Wij nemen binnen 24 uur contact op."
+  },
+  "vacatures": {
+    "title": "Werken bij MMBS Groep",
+    "subtitle": "Sluit je aan bij ons team van meer dan 100 vakspecialisten.",
+    "open_positions": "Openstaande vacatures",
+    "no_vacancies": "Momenteel geen openstaande vacatures. Stuur ons een open sollicitatie.",
+    "apply": "Solliciteer",
+    "open_application": "Open sollicitatie",
+    "open_application_text": "Geen passende vacature gevonden? Stuur ons uw cv en motivatie.",
+    "location": "Locatie",
+    "hours": "Uren",
+    "fulltime": "Fulltime",
+    "parttime": "Parttime"
+  },
+  "nieuws": {
+    "title": "Nieuws & Updates",
+    "subtitle": "Het laatste nieuws van MMBS Groep.",
+    "read_more": "Lees meer",
+    "back": "Terug naar nieuws",
+    "published": "Gepubliceerd op",
+    "categories": {
+      "company": "Bedrijfsnieuws",
+      "project": "Project",
+      "industry": "Sector"
+    }
+  },
+  "footer": {
+    "description": "Expert in metselwerk, gevelrenovatie, monumentale restauratie, isolatie en steigerbouw. Gevestigd in Utrecht, actief door heel Nederland.",
+    "navigation": "Navigatie",
+    "contact": "Contact",
+    "legal": "Juridisch",
+    "privacy": "Privacybeleid",
+    "terms": "Algemene voorwaarden",
+    "copyright": "© {year} MMBS Groep. Alle rechten voorbehouden.",
+    "kvk": "KvK: 12345678",
+    "social": {
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    }
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Er is een fout opgetreden",
+    "back": "Terug",
+    "close": "Sluiten",
+    "open_menu": "Menu openen",
+    "close_menu": "Menu sluiten",
+    "language": "Taal",
+    "skip_to_content": "Ga naar inhoud"
+  },
+  "chatbot": {
+    "title": "MMBS Assistent",
+    "subtitle": "Hoe kan ik u helpen?",
+    "placeholder": "Stel een vraag...",
+    "send": "Versturen",
+    "open": "Chat openen",
+    "close": "Chat sluiten",
+    "welcome": "Goedendag! Ik ben de virtuele assistent van MMBS Groep. Hoe kan ik u helpen met uw bouwproject?"
+  },
+  "cookie": {
+    "title": "Wij gebruiken cookies",
+    "description": "Wij gebruiken cookies om uw ervaring te verbeteren en onze website te analyseren. Door verder te gaan, gaat u akkoord met ons privacybeleid.",
+    "accept": "Accepteren",
+    "decline": "Weigeren",
+    "learn_more": "Meer informatie"
+  },
+  "errors": {
+    "not_found_title": "Pagina niet gevonden",
+    "not_found_description": "De pagina die u zoekt bestaat niet of is verplaatst.",
+    "not_found_button": "Ga naar startpagina",
+    "error_title": "Er is iets misgegaan",
+    "error_description": "Er is een onverwachte fout opgetreden. Probeer de pagina te vernieuwen.",
+    "error_button": "Probeer opnieuw"
+  }
+}
