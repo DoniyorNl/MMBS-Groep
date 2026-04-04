@@ -7,7 +7,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { SITE_CONFIG } from "@/lib/constants";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <>

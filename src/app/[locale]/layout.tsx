@@ -1,10 +1,13 @@
+import { Chatbot } from "@/components/features/chatbot/Chatbot";
+import { CookieBanner } from "@/components/features/cookie/CookieBanner";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { BackToTop } from "@/components/ui/BackToTop";
 import { routing } from "@/i18n/routing";
 import { SITE_CONFIG } from "@/lib/constants";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 interface LocaleLayoutProps {
@@ -59,6 +62,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     notFound();
   }
 
+  setRequestLocale(locale);
+
   const messages = await getMessages();
 
   const structuredData = {
@@ -81,17 +86,32 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     sameAs: [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.instagram],
   };
 
+  const tc = await getTranslations({ locale, namespace: "common" });
+
   return (
-    <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider locale={locale} messages={messages}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+
+      {/* Accessibility: skip navigation */}
+      <a
+        href="#main-content"
+        className="fixed -top-full left-4 z-[100] rounded-b-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-[var(--color-background)] transition-all focus:top-0"
+      >
+        {tc("skip_to_content")}
+      </a>
+
       <Header locale={locale} />
       <main id="main-content" className="min-h-screen">
         {children}
       </main>
       <Footer locale={locale} />
+
+      <BackToTop />
+      <CookieBanner locale={locale} />
+      <Chatbot locale={locale} />
     </NextIntlClientProvider>
   );
 }

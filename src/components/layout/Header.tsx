@@ -3,6 +3,7 @@
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useScrolled } from "@/hooks/useScrolled";
 import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -25,7 +26,8 @@ export function Header({ locale }: HeaderProps) {
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
-  const isActive = (href: string) => pathname.includes(href);
+  const isActive = (href: string) =>
+    pathname === `/${locale}${href}` || pathname.startsWith(`/${locale}${href}/`);
 
   return (
     <>
@@ -65,23 +67,23 @@ export function Header({ locale }: HeaderProps) {
             ))}
           </nav>
 
-          {/* Right side */}
-          <div className="hidden items-center gap-3 lg:flex">
-            <LanguageSwitcher />
+          {/* Right side — always visible from sm+ */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle className="hidden sm:flex" />
+            <LanguageSwitcher className="hidden sm:flex" />
             <Button asChild size="sm">
-              <Link href={`/${locale}/contact`}>{t("offerte")}</Link>
+              <Link href={`/${locale}/offerte`}>{t("offerte")}</Link>
             </Button>
+            {/* Mobile toggle — only on < lg */}
+            <button
+              className="flex h-9 w-9 items-center justify-center rounded-lg text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-surface)] lg:hidden"
+              onClick={() => setMobileOpen((o) => !o)}
+              aria-label={mobileOpen ? tc("close_menu") : tc("open_menu")}
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
-
-          {/* Mobile toggle */}
-          <button
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-surface)] lg:hidden"
-            onClick={() => setMobileOpen((o) => !o)}
-            aria-label={mobileOpen ? tc("close_menu") : tc("open_menu")}
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
         </div>
       </header>
 

@@ -1,12 +1,12 @@
 # MMBS Groep — Loyiha Progressi
-> Oxirgi yangilanish: 3 Aprel 2026
+> Oxirgi yangilanish: 4 Aprel 2026
 
 ---
 
-## Umumiy holat: **Phase 4/8 tugagan** ✅
+## Umumiy holat: **Phase 7/8 tugagan** ✅
 
 ```
-█████████████████░░░░░░░░░░░░░░░░   ~45% complete
+████████████████████████████░░░░   ~75% complete
 ```
 
 ---
@@ -14,133 +14,144 @@
 ## ✅ Tugagan Fazalar
 
 ### Phase 0 — Setup & Configuration
-- [x] Next.js 16 + TypeScript (strict mode)
+- [x] Next.js 16.2.2 + TypeScript (strict mode)
 - [x] Tailwind CSS v4 (CSS-first config)
-- [x] Barcha npm packages o'rnatildi
+- [x] Barcha npm packages o'rnatildi (`next-themes` qo'shildi)
 - [x] `eslint.config.mjs` — ESLint 9 flat config
 - [x] `.prettierrc` + `prettier-plugin-tailwindcss`
 - [x] `.env.example` fayl yaratildi
 - [x] `next.config.ts` — image optimization, next-intl plugin
 - [x] `vercel.json` — security headers
 - [x] `tsconfig.json` — strict mode, path aliases
-- [x] Papka strukturasi to'liq yaratildi
 
 ### Phase 1 — Design System
-- [x] `src/app/globals.css` — CSS variables + Tailwind v4 `@theme` block
-- [x] `src/app/layout.tsx` — root layout, Syne + DM Sans fontlar
+- [x] `globals.css` — CSS variables, dark mode, system fonts (SF Pro Display)
 - [x] `src/lib/utils.ts` — `cn()`, `formatPrice()`, `slugify()`
 - [x] `src/lib/constants.ts` — SITE_CONFIG, NAV_ITEMS, SERVICE_SLUGS
-- [x] `src/components/ui/Button.tsx` — primary/secondary/ghost/outline/destructive
-- [x] `src/components/ui/Badge.tsx`
-- [x] `src/components/ui/Card.tsx` + CardHeader/Title/Content/Footer
-- [x] `src/components/ui/Input.tsx` — label, error, hint support
-- [x] `src/components/ui/Textarea.tsx`
-- [x] `src/components/ui/ScrollReveal.tsx` — Framer Motion intersection observer
-- [x] `src/components/ui/AnimatedCounter.tsx` — spring animation
-- [x] `src/components/ui/ImageWithFallback.tsx`
+- [x] `Button.tsx` — primary/secondary/ghost/outline, asChild prop fix
+- [x] `Badge.tsx`, `Card.tsx`, `Input.tsx`, `Textarea.tsx`
+- [x] `ScrollReveal.tsx` — Framer Motion intersection observer
+- [x] `AnimatedCounter.tsx` — spring animation
+- [x] `ImageWithFallback.tsx`
+- [x] `BackToTop.tsx` — scroll-triggered, smooth animation *(yangi)*
+- [x] `Breadcrumbs.tsx` — Schema.org BreadcrumbList markup *(yangi)*
+- [x] `ThemeToggle.tsx` — 🌙/☀️ dark mode toggle *(yangi)*
 
 ### Phase 2 — i18n Setup
-- [x] `middleware.ts` — next-intl locale routing (root levelda)
-- [x] `src/i18n/routing.ts` — defineRouting (nl default, en)
+- [x] `middleware.ts` — next-intl locale routing
+- [x] `src/i18n/routing.ts` — defineRouting (pathnames olib tashlandi)
 - [x] `src/i18n/request.ts` — getRequestConfig
 - [x] `messages/nl.json` — 400+ Dutch translation keys
 - [x] `messages/en.json` — 400+ English translation keys
-- [x] Barcha namespaces: nav, hero, stats, services, projects, whyus, testimonials, cta, about, contact, calculator, vacatures, nieuws, footer, common, chatbot, cookie, errors
+- [x] **BUG FIX:** `setRequestLocale(locale)` barcha layout + page larga qo'shildi
+- [x] **BUG FIX:** `NextIntlClientProvider locale={locale}` prop qo'shildi
 
 ### Phase 3 — Layout Components
-- [x] `src/components/layout/Header.tsx` — sticky + backdrop blur + active nav
-- [x] `src/components/layout/MobileMenu.tsx` — fullscreen overlay + Framer Motion
-- [x] `src/components/layout/Footer.tsx` — 3 kolumn + social links
-- [x] `src/components/layout/LanguageSwitcher.tsx`
-- [x] `src/hooks/useScrolled.ts`
-- [x] `src/hooks/useMediaQuery.ts`
-- [x] `src/app/[locale]/layout.tsx` — JSON-LD schema, NextIntlClientProvider
+- [x] `Header.tsx` — sticky, dark mode toggle, offerte tugmasi har doim ko'rinadi
+- [x] `MobileMenu.tsx` — fullscreen overlay, ThemeToggle, offerte link
+- [x] `Footer.tsx` — 3 kolumn, social links, privacy/terms links
+- [x] `LanguageSwitcher.tsx` — `window.location.assign` yondashuvi
+- [x] `ThemeProvider.tsx` — next-themes wrapper *(yangi)*
+- [x] `app/layout.tsx` — ThemeProvider qo'shildi
+- [x] `app/[locale]/layout.tsx` — skip-to-content, BackToTop, CookieBanner
 
 ### Phase 4 — Homepage
-- [x] `src/components/sections/Hero.tsx` — full viewport, animated, dual CTA
-- [x] `src/components/sections/Stats.tsx` — animated counters (20+, 1500+, 100+, 500+)
-- [x] `src/components/sections/Services.tsx` — 5 service cards + hover effects
-- [x] `src/components/sections/Projects.tsx` — 3 featured projects grid
-- [x] `src/components/sections/WhyUs.tsx` — 4 USP value propositions
-- [x] `src/components/sections/Testimonials.tsx` — 3 client testimonials
-- [x] `src/components/sections/CTA.tsx` — call to action section
-- [x] `src/app/[locale]/page.tsx` — homepage
-- [x] `src/app/[locale]/loading.tsx` — skeleton loader
-- [x] `src/app/[locale]/error.tsx` — error boundary
-- [x] `src/app/[locale]/not-found.tsx` — 404 sahifa
+- [x] `Hero.tsx` — full viewport, animated, dual CTA, letter-spacing fix
+- [x] `Stats.tsx` — animated counters
+- [x] `Services.tsx` — 5 service cards, translation keys
+- [x] `Projects.tsx` — 3 featured projects, onError fix
+- [x] `WhyUs.tsx` — 4 USP value propositions
+- [x] `Testimonials.tsx` — 3 client testimonials
+- [x] `CTA.tsx` — primary → /offerte, secondary → /contact
 
-### Data Layer
-- [x] `src/types/index.ts` — Service, Project, Testimonial, TeamMember, Vacature, NewsArticle types
-- [x] `src/data/services.ts` — 5 xizmat ma'lumotlari
-- [x] `src/data/projects.ts` — 6 ta haqiqiy loyiha
-- [x] `src/data/testimonials.ts` — 3 mijoz fikri
-- [x] `src/data/calculator.ts` — narx hisoblash logikasi
+### Phase 5 — Ichki Sahifalar
+- [x] `/diensten` — services grid, icons, badges
+- [x] `/diensten/[slug]` — hero image, features, pricing, related projects, Breadcrumbs
+- [x] `/projecten` — filter by type (client component), masonry grid
+- [x] `/projecten/[slug]` — gallery, details sidebar, related projects, Breadcrumbs
+- [x] `/contact` — ContactForm, info cards, Google Maps embed
+- [x] `/offerte` — Calculator (3-step), sidebar, trust elements *(yangi)*
+- [x] `/over` — story, timeline, team, certifications
+- [x] `/vacatures` — open positions, benefits
+- [x] `/nieuws` — featured + grid, category labels
+- [x] `/nieuws/[slug]` — article, sidebar, Breadcrumbs
+- [x] `/privacybeleid` — NL + EN, 8 bo'lim, GDPR muvofiq *(yangi)*
+- [x] `/algemene-voorwaarden` — NL + EN, 9 modda *(yangi)*
+
+### Phase 6 — Features
+- [x] `src/app/api/contact/route.ts` — validation, logging
+- [x] `src/app/api/quote/route.ts` — estimate calculation
+- [x] `src/app/api/chat/route.ts` — rule-based chatbot
+- [x] `ContactForm.tsx` — 3-step form, success/error states
+- [x] `Calculator.tsx` — 3-step, real-time price estimate
+- [x] `Chatbot.tsx` — floating widget, chat window
+- [x] `CookieBanner.tsx` — GDPR, localStorage, Framer Motion *(yangi)*
+- [ ] Email integratsiya (Resend) — KEYIN
+- [ ] AI Chatbot (Gemini) — KEYIN
+
+### Phase 7 — SEO + Performance + Legal
+- [x] `generateMetadata` — barcha sahifalarda
+- [x] JSON-LD LocalBusiness schema — locale layout
+- [x] `app/sitemap.ts` — barcha locale + route + alternates *(yangi)*
+- [x] `app/robots.ts` — /api/ bloklangan *(yangi)*
+- [x] `app/opengraph-image.tsx` — Next.js ImageResponse, black/white *(yangi)*
+- [x] `app/not-found.tsx` — root 404 (html/body yo'q) *(yangi)*
+- [x] `app/[locale]/not-found.tsx` — locale 404, Header/Footer bilan *(yangi)*
+- [x] `app/[locale]/error.tsx` — error boundary, dev stack *(yangi)*
+- [x] Dark mode — CSS variables, next-themes *(yangi)*
+- [x] Skip-to-content — accessibility (WCAG) *(yangi)*
+- [ ] Lighthouse audit — deploy dan keyin
+- [ ] Dynamic imports — code splitting
 
 ---
 
 ## ⏳ Qolgan Fazalar
 
-### Phase 5 — Ichki Sahifalar
-- [ ] `/diensten` — services overview page
-- [ ] `/diensten/[slug]` — single service page
-- [ ] `/projecten` — projects masonry grid + filter
-- [ ] `/projecten/[slug]` — project detail + image gallery
-- [ ] `/contact` — contact form + map + info
-- [ ] `/over` — about page + team
-- [ ] `/vacatures` — open positions page
-- [ ] `/nieuws` — news list page
-- [ ] `/nieuws/[slug]` — single news article
-- [ ] `/privacybeleid` — Privacy Policy (EU/NL majburiy)
-- [ ] `/algemene-voorwaarden` — Terms & Conditions
+### Phase 8 — Deploy (Ertangi kun)
 
-### Phase 6 — Advanced Features
-- [ ] `src/app/api/chat/route.ts` — AI Chatbot (Gemini streaming)
-- [ ] `src/components/features/chatbot/ChatWidget.tsx`
-- [ ] `src/components/features/chatbot/ChatWindow.tsx`
-- [ ] `src/components/features/chatbot/ChatMessage.tsx`
-- [ ] `src/app/api/contact/route.ts` — Contact form → Resend email
-- [ ] `src/app/api/quote/route.ts` — Quote calculator → email
-- [ ] `src/components/features/contact/ContactForm.tsx`
-- [ ] `src/components/features/calculator/QuoteCalculator.tsx`
-- [ ] `src/components/features/calculator/ServiceSelector.tsx`
-- [ ] `src/components/features/calculator/AreaInput.tsx`
-- [ ] `src/components/features/calculator/QuoteSummary.tsx`
+#### Ustuvorlik 1 — Email (Resend)
+- [ ] `RESEND_API_KEY` olish → resend.com
 - [ ] `src/emails/ContactEmail.tsx` — react-email template
 - [ ] `src/emails/QuoteEmail.tsx` — react-email template
+- [ ] `/api/contact` → Resend bilan bog'lash
+- [ ] `/api/quote` → Resend bilan bog'lash
 
-### Phase 7 — SEO + Performance + Legal
-- [ ] `src/app/sitemap.ts` — auto-generated sitemap
-- [ ] `src/app/robots.ts`
-- [ ] `public/og-image.jpg` — Open Graph image (1200x630)
-- [ ] Barcha sahifalarda `generateMetadata`
-- [ ] JSON-LD schema optimization
-- [ ] GDPR Cookie Consent banner
-- [ ] Dynamic imports — ChatWidget, Calculator (code splitting)
-- [ ] Bundle analyzer audit
-- [ ] Lighthouse 95+ score
+#### Ustuvorlik 2 — Rasmlar
+- [ ] Loyiha rasmlari `public/images/projects/` → WebP format
+- [ ] Xizmat rasmlari `public/images/services/` → WebP format
 
-### Phase 8 — Deploy
-- [ ] GitHub push (main branch)
+#### Ustuvorlik 3 — AI Chatbot
+- [ ] `GEMINI_API_KEY` olish → aistudio.google.com
+- [ ] `@ai-sdk/google` o'rnatish
+- [ ] `/api/chat` → real Gemini streaming
+
+#### Ustuvorlik 4 — Production tekshirish
+- [ ] `npm run build` — error yo'q
+- [ ] `npm run type-check` — TypeScript clean
+- [ ] Lighthouse: Performance 95+, SEO 100, Accessibility 90+
+- [ ] Mobile 320px → 1920px test
+
+#### Ustuvorlik 5 — Vercel Deploy
+- [ ] GitHub push (main)
 - [ ] Vercel project connect
-- [ ] Environment variables (RESEND_API_KEY, GEMINI_API_KEY)
-- [ ] Custom domain setup (mmbs.nl) — optional
-- [ ] Production build check (`npm run build` clean)
-- [ ] Final Lighthouse audit
+- [ ] Environment variables: `RESEND_API_KEY`, `GEMINI_API_KEY`, `NEXT_PUBLIC_SITE_URL`
+- [ ] Custom domain (mmbs.nl) — ixtiyoriy
+- [ ] Production Lighthouse audit
 
 ---
 
 ## Siz Tayyorlashingiz Kerak
-- [ ] `RESEND_API_KEY` — [resend.com](https://resend.com) dan bepul
-- [ ] `GEMINI_API_KEY` — [aistudio.google.com](https://aistudio.google.com) dan bepul
-- [ ] Loyiha rasmlari (yoki AI bilan generate qilamiz)
-- [ ] Haqiqiy kontent (jamoat, narxlar, yangiliklar)
+- [ ] `RESEND_API_KEY` — [resend.com](https://resend.com) (bepul, 3000 ta/oy)
+- [ ] `GEMINI_API_KEY` — [aistudio.google.com](https://aistudio.google.com) (bepul)
+- [ ] Loyiha rasmlari (real yoki AI generate)
+- [ ] Haqiqiy kontent (jamoat, sertifikatlar, yangiliklar)
 
 ---
 
 ## Definition of Done
 - [ ] Lighthouse: Performance **95+**, SEO **100**, Accessibility **90+**
 - [ ] Mobile: 320px → 1920px responsive
-- [ ] NL + EN to'liq tarjima
+- [ ] NL + EN to'liq tarjima ✅
 - [ ] `npm run build` — error yo'q
 - [ ] `npm run type-check` — error yo'q
 - [ ] `npm run lint` — warning yo'q

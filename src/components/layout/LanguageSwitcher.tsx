@@ -1,40 +1,56 @@
 "use client";
 
-import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
-import { useTransition } from "react";
+import { useEffect, useState } from "react";
+
+const LOCALES = ["nl", "en"] as const;
+type Locale = (typeof LOCALES)[number];
+
+function getLocaleFromUrl(): Locale {
+  if (typeof window === "undefined") return "nl";
+  const seg = window.location.pathname.split("/")[1];
+  return seg === "en" ? "en" : "nl";
+}
 
 export function LanguageSwitcher({ className }: { className?: string }) {
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
+  const [active, setActive] = useState<Locale>("nl");
 
-  const handleSwitch = (newLocale: string) => {
-    if (newLocale === locale) return;
-    startTransition(() => {
-      const segments = pathname.split("/");
-      segments[1] = newLocale;
-      router.replace(segments.join("/"));
-    });
+  // Sync with actual URL on mount and on popstate
+  useEffect(() => {
+    setActive(getLocaleFromUrl());
+    const onPop = () => setActive(getLocaleFromUrl());
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  const switchTo = (next: Locale) => {
+    const current = getLocaleFromUrl(); // always read live URL
+    if (next === current) return;
+
+    const parts = window.location.pathname.split("/");
+    parts[1] = next;
+    window.location.assign(parts.join("/"));
   };
 
   return (
-    <div className={cn("flex items-center gap-1", className)}>
-      {routing.locales.map((loc) => (
+    <div
+      className={cn(
+        "inline-flex items-center gap-0.5 rounded-lg border border-[var(--color-border)] p-1",
+        className,
+      )}
+    >
+      {LOCALES.map((loc) => (
         <button
           key={loc}
-          onClick={() => handleSwitch(loc)}
-          disabled={isPending}
-          className={cn(
-            "rounded px-2 py-1 text-xs font-semibold uppercase tracking-widest transition-colors",
-            loc === locale
-              ? "text-[var(--color-accent)]"
-              : "text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]",
-          )}
+          onClick={() => switchTo(loc)}
           aria-label={`Switch to ${loc.toUpperCase()}`}
+          aria-pressed={loc === active}
+          className={cn(
+            "rounded-md px-2.5 py-1 text-xs font-semibold uppercase tracking-widest transition-all duration-150",
+            loc === active
+              ? "bg-[var(--color-text-primary)] text-[var(--color-background)]"
+              : "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]",
+          )}
         >
           {loc.toUpperCase()}
         </button>

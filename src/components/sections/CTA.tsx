@@ -32,7 +32,7 @@ export function CTA({ locale }: CTAProps) {
         <ScrollReveal delay={0.2}>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button asChild size="lg">
-              <Link href={`/${locale}/contact`}>{t("button_primary")}</Link>
+              <Link href={`/${locale}/offerte`}>{t("button_primary")}</Link>
             </Button>
             <Button asChild variant="secondary" size="lg">
               <Link href={`/${locale}/contact`}>{t("button_secondary")}</Link>

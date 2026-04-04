@@ -2,6 +2,7 @@
 
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
 import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
@@ -69,7 +70,7 @@ export function MobileMenu({ isOpen, onClose, locale }: MobileMenuProps) {
               className="mt-8 flex flex-col gap-4"
             >
               <Button asChild size="lg" className="w-full">
-                <Link href={`/${locale}/contact`}>{t("offerte")}</Link>
+                <Link href={`/${locale}/offerte`}>{t("offerte")}</Link>
               </Button>
 
               <div className="flex items-center justify-between">
@@ -79,7 +80,10 @@ export function MobileMenu({ isOpen, onClose, locale }: MobileMenuProps) {
                 >
                   {SITE_CONFIG.phoneFormatted}
                 </a>
-                <LanguageSwitcher />
+                <div className="flex items-center gap-2">
+                  <ThemeToggle />
+                  <LanguageSwitcher />
+                </div>
               </div>
             </motion.div>
           </div>

@@ -17,15 +17,12 @@ export function Hero({ locale }: HeroProps) {
     <section className="relative flex min-h-screen items-center overflow-hidden bg-[var(--color-background)]">
       {/* Background grid pattern */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage: `linear-gradient(var(--color-text-primary) 1px, transparent 1px), linear-gradient(90deg, var(--color-text-primary) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(#0a0a0a 1px, transparent 1px), linear-gradient(90deg, #0a0a0a 1px, transparent 1px)`,
           backgroundSize: "64px 64px",
         }}
       />
-
-      {/* Accent glow */}
-      <div className="pointer-events-none absolute top-1/4 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-accent)] opacity-[0.04] blur-[120px]" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
@@ -47,7 +44,7 @@ export function Hero({ locale }: HeroProps) {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-display mb-6 text-5xl font-black leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl xl:text-8xl"
+            className="font-display mb-6 text-5xl font-black leading-[1.1] tracking-normal text-balance sm:text-6xl lg:text-7xl xl:text-8xl"
           >
             {t("headline").split("\n").map((line, i) => (
               <span key={i} className="block">
@@ -65,7 +62,7 @@ export function Hero({ locale }: HeroProps) {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="mb-10 max-w-xl text-lg leading-relaxed text-[var(--color-text-secondary)] sm:text-xl"
+            className="mb-10 max-w-xl text-lg leading-[1.7] tracking-wide text-[var(--color-text-secondary)] sm:text-xl"
           >
             {t("subline")}
           </motion.p>
