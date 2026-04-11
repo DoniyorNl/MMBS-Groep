@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useScrolled } from "@/hooks/useScrolled";
 import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
+import { getNavItemHref } from "@/lib/services-routing";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -26,8 +27,11 @@ export function Header({ locale }: HeaderProps) {
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
-  const isActive = (href: string) =>
-    pathname === `/${locale}${href}` || pathname.startsWith(`/${locale}${href}/`);
+  const isActive = (key: string) => {
+    const href = getNavItemHref(key, locale);
+    const full = `/${locale}${href}`;
+    return pathname === full || pathname.startsWith(`${full}/`);
+  };
 
   return (
     <>
@@ -54,10 +58,10 @@ export function Header({ locale }: HeaderProps) {
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.key}
-                href={`/${locale}${item.href}`}
+                href={`/${locale}${getNavItemHref(item.key, locale)}`}
                 className={cn(
                   "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
-                  isActive(item.href)
+                  isActive(item.key)
                     ? "text-[var(--color-accent)]"
                     : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]",
                 )}

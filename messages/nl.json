@@ -140,7 +140,14 @@
     "hours_title": "Openingstijden",
     "hours": "Maandag — Vrijdag: 07:00 — 17:00",
     "calculator_title": "Bereken uw offerte",
-    "calculator_subtitle": "Krijg direct een indicatie van de kosten voor uw project."
+    "calculator_subtitle": "Krijg direct een indicatie van de kosten voor uw project.",
+    "cv_label": "CV (PDF)",
+    "cv_hint": "Upload uw cv als PDF, max. 4 MB.",
+    "cv_required": "Upload uw cv als PDF.",
+    "cv_invalid": "Alleen PDF-bestanden zijn toegestaan.",
+    "cv_too_large": "Het bestand is te groot. Maximum is 4 MB.",
+    "applying_for": "Sollicitatie voor",
+    "send_another": "Nieuw bericht sturen"
   },
   "calculator": {
     "step1_title": "Selecteer de dienst",

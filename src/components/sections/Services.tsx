@@ -1,6 +1,7 @@
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { services } from "@/data/services";
 import { ArrowRight, Blocks, Building2, Flame, Landmark, Wrench } from "lucide-react";
+import { getServiceDetailPath, getServiceIndexPath } from "@/lib/services-routing";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -37,7 +38,7 @@ export function Services({ locale }: ServicesProps) {
             return (
               <ScrollReveal key={service.slug} delay={i * 0.08}>
                 <Link
-                  href={`/${locale}/diensten/${service.slug}`}
+                  href={getServiceDetailPath(locale, service)}
                   className="group flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-all duration-300 hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-surface-hover)] hover:shadow-xl hover:shadow-[var(--color-accent-muted)]"
                 >
                   <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-accent-muted)]">
@@ -61,7 +62,7 @@ export function Services({ locale }: ServicesProps) {
           {/* CTA Card */}
           <ScrollReveal delay={services.length * 0.08}>
             <Link
-              href={`/${locale}/diensten`}
+              href={getServiceIndexPath(locale)}
               className="group flex h-full flex-col items-center justify-center rounded-2xl border border-dashed border-[var(--color-border)] p-6 text-center transition-all duration-300 hover:border-[var(--color-accent)]/40"
             >
               <p className="mb-2 text-lg font-semibold text-[var(--color-text-secondary)]">

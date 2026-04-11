@@ -43,6 +43,7 @@ export async function generateMetadata({
       languages: {
         nl: `${SITE_CONFIG.url}/nl`,
         en: `${SITE_CONFIG.url}/en`,
+        "x-default": `${SITE_CONFIG.url}/nl`,
       },
     },
     openGraph: {
@@ -69,6 +70,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": `${SITE_CONFIG.url}/#organization`,
     name: SITE_CONFIG.name,
     description:
       "Specialist in geveloplossingen en bouwprojecten. Expert in metselwerk, gevelrenovatie, monumentale restauratie, isolatie en steigerbouw.",

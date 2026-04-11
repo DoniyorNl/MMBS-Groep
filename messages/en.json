@@ -140,7 +140,14 @@
     "hours_title": "Opening hours",
     "hours": "Monday — Friday: 07:00 — 17:00",
     "calculator_title": "Calculate your quote",
-    "calculator_subtitle": "Get an immediate cost estimate for your project."
+    "calculator_subtitle": "Get an immediate cost estimate for your project.",
+    "cv_label": "CV (PDF)",
+    "cv_hint": "Upload your CV as a PDF only, max. 4 MB.",
+    "cv_required": "Please upload your CV as a PDF.",
+    "cv_invalid": "Only PDF files are accepted.",
+    "cv_too_large": "The file is too large. Maximum size is 4 MB.",
+    "applying_for": "Application for",
+    "send_another": "Send another message"
   },
   "calculator": {
     "step1_title": "Select the service",

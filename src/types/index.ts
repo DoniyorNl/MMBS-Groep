@@ -1,7 +1,12 @@
 export type Locale = "nl" | "en";
 
 export interface Service {
+  /** Canonical id (NL-style) — translations, pricing, calculator keys */
   slug: string;
+  /** URL segment for `/nl/diensten/[slugNl]` */
+  slugNl: string;
+  /** URL segment for `/en/services/[slugEn]` */
+  slugEn: string;
   icon: string;
   image: string;
   pricePerM2: number;

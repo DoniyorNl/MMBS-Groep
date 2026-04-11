@@ -4,6 +4,7 @@ import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
+import { getNavItemHref } from "@/lib/services-routing";
 import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -54,7 +55,7 @@ export function MobileMenu({ isOpen, onClose, locale }: MobileMenuProps) {
                 transition={{ delay: 0.05 * i, duration: 0.3 }}
               >
                 <Link
-                  href={`/${locale}${item.href}`}
+                  href={`/${locale}${getNavItemHref(item.key, locale)}`}
                   className="block py-4 text-3xl font-bold tracking-tight text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]"
                 >
                   {t(item.key)}

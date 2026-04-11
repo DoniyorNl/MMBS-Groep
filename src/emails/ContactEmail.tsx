@@ -15,16 +15,42 @@ interface ContactEmailProps {
   email: string;
   phone?: string;
   message: string;
+  vacatureId?: string;
+  vacatureTitle?: string;
 }
 
-export function ContactEmail({ name, email, phone, message }: ContactEmailProps) {
+export function ContactEmail({
+  name,
+  email,
+  phone,
+  message,
+  vacatureId,
+  vacatureTitle,
+}: ContactEmailProps) {
+  const isApplication = Boolean(vacatureId || vacatureTitle);
+  const preview = isApplication
+    ? `Sollicitatie${vacatureTitle ? ` — ${vacatureTitle}` : ""} — ${name}`
+    : `Nieuw bericht via contactformulier — ${name}`;
+
   return (
     <Html>
       <Head />
-      <Preview>Nieuw bericht via contactformulier — {name}</Preview>
+      <Preview>{preview}</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Heading style={h1}>Contactformulier — MMBS Groep</Heading>
+          <Heading style={h1}>
+            {isApplication ? "Sollicitatie — MMBS Groep" : "Contactformulier — MMBS Groep"}
+          </Heading>
+          {vacatureTitle ? (
+            <Text style={text}>
+              <strong>Vacature:</strong> {vacatureTitle}
+            </Text>
+          ) : null}
+          {vacatureId && !vacatureTitle ? (
+            <Text style={text}>
+              <strong>Vacature-ID:</strong> {vacatureId}
+            </Text>
+          ) : null}
           <Text style={text}>
             <strong>Naam:</strong> {name}
           </Text>

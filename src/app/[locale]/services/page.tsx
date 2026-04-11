@@ -10,10 +10,10 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  if (locale === "en") {
+  if (locale === "nl") {
     return {
       alternates: {
-        canonical: `${SITE_CONFIG.url}/en/services`,
+        canonical: `${SITE_CONFIG.url}/nl/diensten`,
         languages: {
           nl: `${SITE_CONFIG.url}/nl/diensten`,
           en: `${SITE_CONFIG.url}/en/services`,
@@ -26,18 +26,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("title"),
     description:
-      "Metselwerk, gevelrenovatie, monumentenrestauratie, isolatie en steigerbouw — metselwerk aannemer en gevelrenovatie aannemer vanuit Utrecht, actief in heel Nederland. Vraag een offerte aan.",
+      "Brickwork, facade renovation, monument restoration, insulation and scaffolding — building facade restoration and professional scaffolding services from Utrecht across the Netherlands. Request a quote.",
     keywords: [
-      "metselwerk aannemer",
-      "gevelrenovatie aannemer",
-      "monumentenrestauratie",
-      "isolatie aannemer",
-      "steigerbouw",
+      "brickwork contractor",
+      "facade renovation contractor",
+      "monument restoration",
+      "building insulation contractor",
+      "scaffolding hire company",
       "Utrecht",
-      "Nederland",
+      "Netherlands",
     ],
     alternates: {
-      canonical: `${SITE_CONFIG.url}/nl/diensten`,
+      canonical: `${SITE_CONFIG.url}/en/services`,
       languages: {
         nl: `${SITE_CONFIG.url}/nl/diensten`,
         en: `${SITE_CONFIG.url}/en/services`,
@@ -47,17 +47,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${t("title")} | ${SITE_CONFIG.name}`,
       description:
-        "Van metselwerk tot gevelrenovatie — complete geveloplossingen. Expert isolatie en steigerbouw.",
-      url: `${SITE_CONFIG.url}/nl/diensten`,
+        "From brickwork to facade renovation — complete facade solutions. Expert insulation and scaffolding.",
+      url: `${SITE_CONFIG.url}/en/services`,
       siteName: SITE_CONFIG.name,
     },
   };
 }
 
-export default async function DienstenPage({ params }: Props) {
+export default async function ServicesPage({ params }: Props) {
   const { locale } = await params;
-  if (locale === "en") {
-    redirect("/en/services");
+  if (locale === "nl") {
+    redirect("/nl/diensten");
   }
   setRequestLocale(locale);
   return <ServicesListing locale={locale} />;

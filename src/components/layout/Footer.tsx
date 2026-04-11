@@ -1,4 +1,5 @@
 import { NAV_ITEMS, SITE_CONFIG } from "@/lib/constants";
+import { getNavItemHref } from "@/lib/services-routing";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -63,7 +64,7 @@ export function Footer({ locale }: FooterProps) {
               {NAV_ITEMS.map((item) => (
                 <li key={item.key}>
                   <Link
-                    href={`/${locale}${item.href}`}
+                    href={`/${locale}${getNavItemHref(item.key, locale)}`}
                     className="text-sm text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-accent)]"
                   >
                     {tn(item.key)}

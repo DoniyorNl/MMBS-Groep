@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   name: "MMBS Groep",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://mmbs-website.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://mmbs-groep.vercel.app",
   description:
     "Expert in metselwerk, gevelrenovatie, monumentale restauratie, isolatie en steigerbouw. Gevestigd in Utrecht, actief door heel Nederland.",
   phone: "+31306865447",

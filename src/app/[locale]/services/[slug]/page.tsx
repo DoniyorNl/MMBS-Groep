@@ -11,21 +11,21 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slugNl }));
+  return services.map((s) => ({ slug: s.slugEn }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  if (locale !== "nl") return {};
-  const service = getServiceByPathSlug(slug, "nl");
+  if (locale !== "en") return {};
+  const service = getServiceByPathSlug(slug, "en");
   if (!service) return {};
   return buildServicePageMetadata(locale, service);
 }
 
-export default async function ServiceDetailNlPage({ params }: Props) {
+export default async function ServiceDetailEnPage({ params }: Props) {
   const { locale, slug } = await params;
-  if (locale !== "nl") notFound();
-  const service = getServiceByPathSlug(slug, "nl");
+  if (locale !== "en") notFound();
+  const service = getServiceByPathSlug(slug, "en");
   if (!service) notFound();
   setRequestLocale(locale);
   return <ServiceDetailView locale={locale} service={service} />;

@@ -1,6 +1,7 @@
 import { newsArticles } from "@/data/nieuws";
 import { projects } from "@/data/projects";
-import { SERVICE_SLUGS, SITE_CONFIG } from "@/lib/constants";
+import { services } from "@/data/services";
+import { SITE_CONFIG } from "@/lib/constants";
 import type { MetadataRoute } from "next";
 
 const LOCALES = ["nl", "en"] as const;
@@ -23,13 +24,66 @@ function entry(
   }));
 }
 
+const serviceAlternates = {
+  nl: `${BASE}/nl/diensten`,
+  en: `${BASE}/en/services`,
+  "x-default": `${BASE}/nl/diensten`,
+};
+
+function serviceIndexEntries(): MetadataRoute.Sitemap[number][] {
+  return [
+    {
+      url: `${BASE}/nl/diensten`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+      alternates: { languages: serviceAlternates },
+    },
+    {
+      url: `${BASE}/en/services`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+      alternates: { languages: serviceAlternates },
+    },
+  ];
+}
+
+function serviceDetailEntries(): MetadataRoute.Sitemap[number][] {
+  const out: MetadataRoute.Sitemap[number][] = [];
+  for (const s of services) {
+    const langs = {
+      nl: `${BASE}/nl/diensten/${s.slugNl}`,
+      en: `${BASE}/en/services/${s.slugEn}`,
+      "x-default": `${BASE}/nl/diensten/${s.slugNl}`,
+    };
+    out.push(
+      {
+        url: `${BASE}/nl/diensten/${s.slugNl}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.85,
+        alternates: { languages: langs },
+      },
+      {
+        url: `${BASE}/en/services/${s.slugEn}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.85,
+        alternates: { languages: langs },
+      },
+    );
+  }
+  return out;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    // ── Home ──────────────────────────────────────────────
     ...entry("", { priority: 1.0, changeFrequency: "weekly" }),
 
-    // ── Static pages ──────────────────────────────────────
-    ...entry("/diensten", { priority: 0.9, changeFrequency: "monthly" }),
+    ...serviceIndexEntries(),
+    ...serviceDetailEntries(),
+
     ...entry("/projecten", { priority: 0.8, changeFrequency: "monthly" }),
     ...entry("/over", { priority: 0.7, changeFrequency: "monthly" }),
     ...entry("/contact", { priority: 0.8, changeFrequency: "monthly" }),
@@ -39,17 +93,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...entry("/privacybeleid", { priority: 0.3, changeFrequency: "yearly" }),
     ...entry("/algemene-voorwaarden", { priority: 0.3, changeFrequency: "yearly" }),
 
-    // ── Service detail pages ───────────────────────────────
-    ...SERVICE_SLUGS.flatMap((slug) =>
-      entry(`/diensten/${slug}`, { priority: 0.85, changeFrequency: "monthly" }),
-    ),
-
-    // ── Project detail pages ───────────────────────────────
     ...projects.flatMap((p) =>
       entry(`/projecten/${p.slug}`, { priority: 0.6, changeFrequency: "monthly" }),
     ),
 
-    // ── News article pages ─────────────────────────────────
     ...newsArticles.flatMap((a) =>
       entry(`/nieuws/${a.slug}`, { priority: 0.65, changeFrequency: "monthly" }),
     ),
