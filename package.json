@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings 0",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true next build"
