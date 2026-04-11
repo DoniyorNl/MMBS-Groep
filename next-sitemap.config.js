@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const SITE_URL = "https://mmbs-groep.nl";
+const SITE_URL = "https://mmbs-groep.vercel.app";
 
 const SERVICES = [
   { slugNl: "metselwerk", slugEn: "brickwork" },
@@ -99,8 +99,8 @@ module.exports = {
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   alternateRefs: [
-    { href: "https://mmbs-groep.nl/en", hreflang: "en" },
-    { href: "https://mmbs-groep.nl/nl", hreflang: "nl" },
+    { href: `${SITE_URL}/en`, hreflang: "en" },
+    { href: `${SITE_URL}/nl`, hreflang: "nl" },
   ],
   robotsTxtOptions: {
     policies: [
@@ -108,7 +108,7 @@ module.exports = {
       { userAgent: "*", disallow: "/api/" },
       { userAgent: "*", disallow: "/_next/" },
     ],
-    additionalSitemaps: ["https://mmbs-groep.nl/sitemap.xml"],
+    additionalSitemaps: [`${SITE_URL}/sitemap.xml`],
   },
   /** Avtomatik topilgan barcha marshrutlarni e'tiborsiz qoldiramiz — faqat additionalPaths */
   transform: async () => null,

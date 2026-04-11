@@ -53,7 +53,7 @@ Layout still uses `title.template` so page titles render as:
 
 ## 4. Site URL default
 
-`SITE_CONFIG.url` in `src/lib/constants.ts` defaults to `https://mmbs-groep.nl` when `NEXT_PUBLIC_SITE_URL` is unset. Set `NEXT_PUBLIC_SITE_URL` in production so canonicals, Open Graph URLs, and JSON-LD match the live domain.
+`SITE_CONFIG.url` in `src/lib/constants.ts` defaults to `https://mmbs-groep.vercel.app` when `NEXT_PUBLIC_SITE_URL` is unset. Set `NEXT_PUBLIC_SITE_URL` in production so canonicals, Open Graph URLs, and JSON-LD match the live domain.
 
 ## 4b. `next-sitemap` (build-time `public/sitemap.xml` + `robots.txt`)
 
@@ -64,7 +64,7 @@ After `next build`, the `postbuild` script runs **`next-sitemap`** using **`next
 
 The App Router files `src/app/sitemap.ts` and `src/app/robots.ts` were **removed** so `/sitemap.xml` and `/robots.txt` are served from **`public/`** (otherwise Next metadata routes would override them).
 
-**Note:** `siteUrl` in `next-sitemap.config.js` is set to `https://mmbs-groep.nl`. Project and news URLs are filled by reading `slug:` lines from `src/data/projects.ts` and `src/data/nieuws.ts`. Service pairs use the same `SERVICES` list as `src/data/services.ts` — if you add a service, update both.
+**Note:** `siteUrl` in `next-sitemap.config.js` is set to `https://mmbs-groep.vercel.app`. Project and news URLs are filled by reading `slug:` lines from `src/data/projects.ts` and `src/data/nieuws.ts`. Service pairs use the same `SERVICES` list as `src/data/services.ts` — if you add a service, update both.
 
 ## 5. Internal linking and navigation
 

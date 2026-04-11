@@ -21,7 +21,7 @@ Bu hujjat loyiha yopilishiga qadar amalga oshirilgan asosiy texnik ishlarni bir 
 
 ## 3. next-sitemap
 
-- `next-sitemap.config.js` — `siteUrl: https://mmbs-groep.nl`, `postbuild: next-sitemap`.
+- `next-sitemap.config.js` — `siteUrl: https://mmbs-groep.vercel.app`, `postbuild: next-sitemap`.
 - `public/sitemap.xml`, `public/robots.txt` builddan keyin.
 - `src/app/sitemap.ts` va `src/app/robots.ts` olib tashlangan (static `public/` ustun).
 
@@ -40,7 +40,7 @@ Bu hujjat loyiha yopilishiga qadar amalga oshirilgan asosiy texnik ishlarni bir 
 ## 6. next.config.ts
 
 - **Headers:** `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy` (barcha `/:path*`).
-- **Redirects:** host `mmbs-groep.vercel.app` → `https://mmbs-groep.nl/:path*` (301).
+- **Redirects:** yo‘q — asosiy domen `https://mmbs-groep.vercel.app` (maxsus `.nl` domeni sotib olinganda `NEXT_PUBLIC_SITE_URL` va Vercel DNS ni yangilash mumkin).
 
 ## 7. Tekshiruvlar (yakuniy)
 
@@ -57,7 +57,7 @@ npm run build
 ## 8. Keyingi qadamlar (tashqarida)
 
 - Google Search Console, Google Business Profile.
-- Production `NEXT_PUBLIC_SITE_URL=https://mmbs-groep.nl`.
+- Production `NEXT_PUBLIC_SITE_URL=https://mmbs-groep.vercel.app` (keyingi `.nl` domeni ulanganda shu o‘zgaruvchini yangilang).
 - Ixtiyoriy: `public/logo.png` va JSON-LD `logo` maydoni.
 
 ---

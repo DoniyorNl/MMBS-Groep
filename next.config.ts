@@ -29,16 +29,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "mmbs-groep.vercel.app" }],
-        destination: "https://mmbs-groep.nl/:path*",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default withBundleAnalyzer(withNextIntl(nextConfig));

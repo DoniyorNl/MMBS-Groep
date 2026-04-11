@@ -11,7 +11,7 @@ User-agent: *
 Disallow: /_next/
 
 # Host
-Host: https://mmbs-groep.nl
+Host: https://mmbs-groep.vercel.app
 
 # Sitemaps
-Sitemap: https://mmbs-groep.nl/sitemap.xml
+Sitemap: https://mmbs-groep.vercel.app/sitemap.xml
