@@ -1,8 +1,8 @@
 import type { ServiceSlug } from "@/lib/constants";
 
 /**
- * SEO-focused titles, meta descriptions, and keywords per service (NL + EN).
- * Woven from construction / facade keyword research (brickwork, gevelrenovatie, etc.).
+ * Per-service SEO for generateMetadata() — NL + EN titles, descriptions, keywords.
+ * Canonical service keys: ServiceSlug (internal id). URLs use slugNl / slugEn.
  */
 export const SERVICE_SEO: Record<
   ServiceSlug,
@@ -13,158 +13,142 @@ export const SERVICE_SEO: Record<
     descriptionEn: string;
     keywordsNl: string[];
     keywordsEn: string[];
-    /** schema.org serviceType (short label) */
     serviceTypeNl: string;
     serviceTypeEn: string;
   }
 > = {
   metselwerk: {
-    titleNl: "Metselwerk aannemer Utrecht & Nederland",
-    titleEn: "Brickwork contractor Netherlands",
+    titleNl: "Metselwerk Aannemer | Professioneel Metselwerk",
+    titleEn: "Brickwork Contractor | Professional Bricklaying Services",
     descriptionNl:
-      "Metselwerk aannemer voor nieuwbouw, renovatie en voegwerk herstel. Metselaar inhuren, bakstenen muur reparatie en gevelmetselwerk — van Utrecht door heel Nederland. Vraag een offerte aan.",
+      "Specialist in metselwerk, voegwerk herstel en bakstenen reparatie. MMBS Groep – betrouwbare aannemer in Nederland. Vraag gratis offerte aan.",
     descriptionEn:
-      "Brickwork contractor for new builds, renovation, and brick pointing / repointing. Bricklaying company, external brickwork repair, and professional bricklayer services across the Netherlands. Request a quote.",
+      "Expert brickwork repair, repointing and bricklaying services. MMBS Groep – trusted contractor in the Netherlands. Get a free quote today.",
     keywordsNl: [
       "metselwerk aannemer",
-      "metselwerk reparatie",
       "metselaar inhuren",
       "voegwerk herstel",
       "bakstenen muur reparatie",
+      "metselwerk reparatie",
       "metselwerk bedrijf",
       "gevelmetselwerk specialist",
-      "metselwerk renovatie aannemer",
       "Utrecht",
+      "Nederland",
     ],
     keywordsEn: [
       "brickwork contractor",
-      "brickwork repair services",
       "bricklaying company",
-      "brick pointing and repointing",
-      "external brickwork repair",
-      "brick wall construction",
-      "brickwork restoration specialist",
+      "brick repointing",
+      "brick pointing",
+      "brickwork repair",
+      "professional bricklayer",
       "Netherlands",
     ],
     serviceTypeNl: "Metselwerk",
-    serviceTypeEn: "Brickwork & masonry",
+    serviceTypeEn: "Brickwork",
   },
   gevelrenovatie: {
-    titleNl: "Gevelrenovatie aannemer | Gevel renoveren & reinigen",
-    titleEn: "Facade renovation contractor | Building facade restoration",
+    titleNl: "Gevelrenovatie Aannemer | Gevel Renoveren",
+    titleEn: "Facade Renovation Contractor | Building Facade Restoration",
     descriptionNl:
-      "Gevelrenovatie aannemer voor gevel herstellen, gevelreiniging en renovatie, gevelisolatie en commerciële gevelrenovatie. Historische gevel restauratie en gevelrenovatie bedrijf — Utrecht & Nederland.",
+      "Specialist in gevelrenovatie en gevelreiniging. MMBS Groep – uw betrouwbare partner voor gevelrenovatie in Nederland. Vraag een offerte aan.",
     descriptionEn:
-      "Facade renovation contractor for building facade restoration, exterior facade repair, facade cleaning and renovation, commercial facade refurbishment, and historic building facade repair across the Netherlands.",
+      "Professional facade renovation and restoration services. MMBS Groep specialises in exterior facade repair across the Netherlands. Request a quote.",
     keywordsNl: [
       "gevelrenovatie aannemer",
       "gevel renoveren kosten",
       "gevelreiniging en renovatie",
       "gevelrenovatie bedrijf",
-      "gevel herstellen specialist",
+      "gevel herstellen",
       "gevelisolatie en renovatie",
-      "commerciële gevelrenovatie",
-      "historische gevel restauratie",
+      "Utrecht",
     ],
     keywordsEn: [
       "facade renovation contractor",
       "building facade restoration",
-      "exterior facade repair company",
+      "exterior facade repair",
       "facade cleaning and renovation",
       "commercial facade refurbishment",
-      "facade renovation specialists",
-      "historic building facade repair",
-      "facade insulation and renovation",
+      "Netherlands",
     ],
     serviceTypeNl: "Gevelrenovatie",
     serviceTypeEn: "Facade renovation",
   },
   "monumentale-restauratie": {
-    titleNl: "Monumentenrestauratie & rijksmonument restauratie",
-    titleEn: "Monument restoration & heritage building restoration",
+    titleNl: "Monumentenrestauratie | Rijksmonument & Erfgoed",
+    titleEn: "Monument Restoration | Heritage & Listed Buildings",
     descriptionNl:
-      "Monumentenrestauratie aannemer: rijksmonument restauratie, historisch gebouw restaureren, monumentenzorg en cultuurhistorisch herfstal. Steenrestauratie en erfgoed restauratiebedrijf in Nederland.",
+      "Rijksmonument restauratie, historische gevels en monumentenzorg. MMBS Groep – specialist in cultureel erfgoed in Nederland. Neem contact op voor advies.",
     descriptionEn:
-      "Monument restoration contractor for heritage building restoration, listed building restoration, historic monument repair, cultural heritage restoration, and rijksmonument projects in the Netherlands.",
+      "Heritage building restoration, listed monuments and stone conservation. MMBS Groep – trusted for rijksmonument and cultural heritage projects across the Netherlands.",
     keywordsNl: [
       "monumentenrestauratie aannemer",
       "rijksmonument restauratie",
       "historisch gebouw restaureren",
-      "monumentenzorg bedrijf",
-      "cultuurhistorisch herstel",
-      "monumentenpand renovatie",
-      "steenrestauratie specialist",
-      "erfgoed restauratiebedrijf",
+      "monumentenzorg",
+      "erfgoed restauratie",
+      "steenrestauratie",
     ],
     keywordsEn: [
       "monument restoration contractor",
       "heritage building restoration",
-      "historic monument repair",
-      "listed building restoration specialist",
-      "cultural heritage restoration company",
-      "stone monument restoration",
-      "monument conservation services",
+      "listed building restoration",
       "rijksmonument restoration",
+      "cultural heritage restoration",
+      "Netherlands",
     ],
     serviceTypeNl: "Monumentale restauratie",
-    serviceTypeEn: "Monument & heritage restoration",
+    serviceTypeEn: "Monument restoration",
   },
   isolatie: {
-    titleNl: "Isolatie aannemer | Gevelisolatie & spouwmuurisolatie",
-    titleEn: "Building insulation contractor | Facade & cavity wall insulation",
+    titleNl: "Isolatie Aannemer | Gevel- & Spouwmuurisolatie",
+    titleEn: "Building Insulation Contractor | Cavity & Facade Insulation",
     descriptionNl:
-      "Isolatie aannemer voor gevelisolatie, spouwmuurisolatie, dakisolatie en buitengevelisolatie. Energiebesparende isolatie en na-isolatie bestaande bouw — advies over isolatie subsidie (ISDE/SEEH) mogelijk.",
+      "Gevelisolatie, spouwmuurisolatie en dakisolatie voor woningen en utiliteit. MMBS Groep helpt u energie besparen. Gratis advies en offerte.",
     descriptionEn:
-      "Building insulation contractor for external wall insulation, cavity wall insulation, roof insulation, and energy-efficient insulation solutions. Commercial building insulation and renovation insulation across the Netherlands.",
+      "External wall insulation, cavity wall and roof insulation for homes and commercial buildings. MMBS Groep helps you save energy across the Netherlands. Free quote.",
     keywordsNl: [
       "isolatie aannemer",
       "gevelisolatie bedrijf",
-      "spouwmuurisolatie specialist",
-      "dakisolatie kosten aanvragen",
-      "buitengevelisolatie aannemer",
+      "spouwmuurisolatie",
+      "dakisolatie",
+      "buitengevelisolatie",
       "energiebesparende isolatie",
-      "isolatie subsidie aanvragen",
-      "na-isolatie bestaande bouw",
+      "isolatie subsidie",
     ],
     keywordsEn: [
       "building insulation contractor",
-      "external wall insulation company",
-      "roof insulation services",
-      "cavity wall insulation specialists",
-      "facade insulation contractor",
-      "energy efficient insulation solutions",
-      "commercial building insulation",
-      "insulation renovation contractor",
+      "cavity wall insulation",
+      "external wall insulation",
+      "facade insulation",
+      "roof insulation",
+      "energy efficient insulation",
+      "Netherlands",
     ],
     serviceTypeNl: "Isolatie",
     serviceTypeEn: "Building insulation",
   },
   steigerbouw: {
-    titleNl: "Steigerbouw & steigers huren | Steiger verhuur renovatie",
-    titleEn: "Scaffolding hire & scaffolding contractor",
+    titleNl: "Steigerbouw & Steigers Huren | Renovatie & Bouw",
+    titleEn: "Scaffolding Hire & Contractor | Renovation Projects",
     descriptionNl:
-      "Steigerbouw bedrijf: steigers huren aannemer, professionele steigerbouw, steigers plaatsen offerte en bouwsteiger aannemer voor renovatie en gevelwerk. NEN-EN 12811 conform door heel Nederland.",
+      "Professionele steigerbouw, steigers plaatsen en verhuur voor gevelwerk en renovatie. MMBS Groep – veilig en volgens norm. Vraag een offerte aan.",
     descriptionEn:
-      "Scaffolding hire company and scaffolding contractor for renovation projects, scaffolding services for renovation, temporary scaffolding erection, façade scaffolding, and commercial scaffolding services across the Netherlands.",
+      "Professional scaffolding hire, erection and rental for façade work and renovation. MMBS Groep – safe, certified scaffolding across the Netherlands. Get a quote.",
     keywordsNl: [
-      "steigers huren aannemer",
       "steigerbouw bedrijf",
+      "steigers huren aannemer",
       "steiger verhuur renovatie",
-      "professionele steigerbouw",
-      "steigers plaatsen offerte",
       "bouwsteiger aannemer",
-      "gevelbekleding steiger",
-      "commercieel steigerbouw",
+      "professionele steigerbouw",
     ],
     keywordsEn: [
       "scaffolding hire company",
       "scaffolding contractor",
       "scaffolding services for renovation",
-      "professional scaffolding company",
-      "temporary scaffolding erection",
-      "scaffolding rental construction",
-      "facade scaffolding contractor",
-      "commercial scaffolding services",
+      "facade scaffolding",
+      "construction scaffolding",
+      "Netherlands",
     ],
     serviceTypeNl: "Steigerbouw",
     serviceTypeEn: "Scaffolding",

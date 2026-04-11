@@ -1,5 +1,7 @@
 # SEO implementation lesson — MMBS Groep (NL & EN)
 
+> Umumiy loyiha yakuni (barcha modullar): [`lessons/2026-04-11-project-completion.md`](lessons/2026-04-11-project-completion.md)
+
 This document explains what was implemented to strengthen technical and on-page SEO for the construction / facade services site, using the keyword themes you provided (brickwork, gevelrenovatie, monument restoration, insulation, scaffolding) and best practices for a bilingual Next.js app.
 
 ## 1. URL structure and hreflang
@@ -32,7 +34,7 @@ The homepage language switcher only swaps the locale segment; these redirects fi
 - **Per-service pages** (`buildServicePageMetadata` in `src/lib/service-metadata.ts`): `alternates.canonical`, `alternates.languages.nl`, `alternates.languages.en`, and `alternates.languages["x-default"]` (default Dutch, as `defaultLocale` is `nl`).
 - **Services listing**: metadata on `src/app/[locale]/diensten/page.tsx` and `src/app/[locale]/services/page.tsx` with the same cross-links.
 - **Root locale layout** (`src/app/[locale]/layout.tsx`): `x-default` added for the home canonical.
-- **Sitemap** (`src/app/sitemap.ts`): service index and each service detail appear as **pairs** of URLs (NL + EN) sharing the same `alternates.languages` block so search engines see the reciprocal hreflang set.
+- **Sitemap** (`next-sitemap` → `public/sitemap.xml`): service index and each service detail appear as **pairs** of URLs (NL + EN) with `xhtml:link` alternates so search engines see the reciprocal hreflang set.
 
 ## 2. Keyword-rich metadata (not stuffed)
 
@@ -51,7 +53,18 @@ Layout still uses `title.template` so page titles render as:
 
 ## 4. Site URL default
 
-`SITE_CONFIG.url` in `src/lib/constants.ts` defaults to `https://mmbs-groep.vercel.app` when `NEXT_PUBLIC_SITE_URL` is unset. In production you should set `NEXT_PUBLIC_SITE_URL` to the final domain (including `https`) so canonicals, Open Graph URLs, and JSON-LD stay correct.
+`SITE_CONFIG.url` in `src/lib/constants.ts` defaults to `https://mmbs-groep.nl` when `NEXT_PUBLIC_SITE_URL` is unset. Set `NEXT_PUBLIC_SITE_URL` in production so canonicals, Open Graph URLs, and JSON-LD match the live domain.
+
+## 4b. `next-sitemap` (build-time `public/sitemap.xml` + `robots.txt`)
+
+After `next build`, the `postbuild` script runs **`next-sitemap`** using **`next-sitemap.config.js`** at the repo root. It writes:
+
+- `public/sitemap.xml` — full URL list with `xhtml:link` alternates (nl/en/x-default), including `/nl/diensten` ↔ `/en/services` pairs for services.
+- `public/robots.txt` — allow `/`, disallow `/api/` and `/_next/`, `Host`, and `Sitemap`.
+
+The App Router files `src/app/sitemap.ts` and `src/app/robots.ts` were **removed** so `/sitemap.xml` and `/robots.txt` are served from **`public/`** (otherwise Next metadata routes would override them).
+
+**Note:** `siteUrl` in `next-sitemap.config.js` is set to `https://mmbs-groep.nl`. Project and news URLs are filled by reading `slug:` lines from `src/data/projects.ts` and `src/data/nieuws.ts`. Service pairs use the same `SERVICES` list as `src/data/services.ts` — if you add a service, update both.
 
 ## 5. Internal linking and navigation
 
@@ -78,7 +91,7 @@ These items were in your plan but are **outside** this repository:
 | Service data | `src/data/services.ts`, `src/types/index.ts` |
 | UI | `src/components/features/services/ServiceDetailView.tsx`, `ServicesListing.tsx` |
 | Routes | `src/app/[locale]/diensten/...`, `src/app/[locale]/services/...` |
-| Sitemap | `src/app/sitemap.ts` |
+| Sitemap | `next-sitemap.config.js`, `public/sitemap.xml` (generated) |
 | Layout schema | `src/app/[locale]/layout.tsx` |
 | Nav / sections | `Header.tsx`, `Footer.tsx`, `MobileMenu.tsx`, `Services.tsx` |
 

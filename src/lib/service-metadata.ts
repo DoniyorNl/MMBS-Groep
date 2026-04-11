@@ -5,6 +5,10 @@ import { resolveOgImageUrl } from "@/lib/media";
 import type { Service } from "@/types";
 import type { Metadata } from "next";
 
+/**
+ * generateMetadata() for both `/nl/diensten/[slugNl]` and `/en/services/[slugEn]`.
+ * Canonical + hreflang always pair NL diensten URL with EN services URL.
+ */
 export function buildServicePageMetadata(locale: string, service: Service): Metadata {
   const seo = getServiceSeoMeta(locale, service.slug as ServiceSlug);
   const canonical = getServiceDetailAbsoluteUrl(locale, service);
@@ -12,6 +16,8 @@ export function buildServicePageMetadata(locale: string, service: Service): Meta
   const enUrl = getServiceDetailAbsoluteUrl("en", service);
 
   const ogTitle = `${seo.title} | ${SITE_CONFIG.name}`;
+  const ogImageUrl = resolveOgImageUrl(service.image);
+  const ogAlt = `${seo.serviceType} — ${SITE_CONFIG.name}`;
 
   return {
     title: seo.title,
@@ -33,16 +39,25 @@ export function buildServicePageMetadata(locale: string, service: Service): Meta
       alternateLocale: locale === "nl" ? ["en_GB"] : ["nl_NL"],
       url: canonical,
       siteName: SITE_CONFIG.name,
-      images: [{ url: resolveOgImageUrl(service.image) }],
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: ogAlt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
       description: seo.description,
+      images: [ogImageUrl],
     },
     robots: {
       index: true,
       follow: true,
+      googleBot: { index: true, follow: true },
     },
   };
 }

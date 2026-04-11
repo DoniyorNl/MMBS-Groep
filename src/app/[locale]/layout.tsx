@@ -4,7 +4,9 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { routing } from "@/i18n/routing";
+import { services } from "@/data/services";
 import { SITE_CONFIG } from "@/lib/constants";
+import { getServiceDetailPath } from "@/lib/services-routing";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -49,9 +51,17 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: isNl ? "nl_NL" : "en_GB",
+      alternateLocale: isNl ? ["en_GB"] : ["nl_NL"],
       url: `${SITE_CONFIG.url}/${locale}`,
       siteName: SITE_CONFIG.name,
-      images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: isNl ? "MMBS Groep Bouw & Renovatie" : "MMBS Group construction & renovation",
+        },
+      ],
     },
   };
 }
@@ -66,15 +76,35 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   setRequestLocale(locale);
 
   const messages = await getMessages();
+  const tServices = await getTranslations({ locale, namespace: "services" });
+
+  const isNl = locale === "nl";
+  const orgDescription = isNl
+    ? "Specialist in metselwerk, gevelrenovatie, monumentenrestauratie, isolatie en steigerbouw. Gevestigd in Utrecht, actief door heel Nederland."
+    : "Specialist in brickwork, facade renovation, monument restoration, insulation and scaffolding. Based in Utrecht, active throughout the Netherlands.";
+
+  const offerCatalogItems = services.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: tServices(`items.${s.slug}.title`),
+        description: tServices(`items.${s.slug}.short`),
+        url: `${SITE_CONFIG.url}${getServiceDetailPath(locale, s)}`,
+      },
+    },
+  }));
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["ConstructionCompany", "LocalBusiness"],
     "@id": `${SITE_CONFIG.url}/#organization`,
     name: SITE_CONFIG.name,
-    description:
-      "Specialist in geveloplossingen en bouwprojecten. Expert in metselwerk, gevelrenovatie, monumentale restauratie, isolatie en steigerbouw.",
+    description: orgDescription,
     url: SITE_CONFIG.url,
+    image: [`${SITE_CONFIG.url}/opengraph-image`],
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
     address: {
@@ -84,8 +114,24 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       addressLocality: SITE_CONFIG.address.city,
       addressCountry: SITE_CONFIG.address.country,
     },
-    openingHours: "Mo-Fr 07:00-17:00",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "07:00",
+        closes: "17:00",
+      },
+    ],
+    areaServed: {
+      "@type": "Country",
+      name: "Netherlands",
+    },
     sameAs: [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.instagram],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: isNl ? "Diensten" : "Services",
+      itemListElement: offerCatalogItems,
+    },
   };
 
   const tc = await getTranslations({ locale, namespace: "common" });

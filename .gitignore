@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+# lockfile when using npm (package-lock.json is canonical)
+pnpm-lock.yaml
 /.pnp
 .pnp.*
 .yarn/*

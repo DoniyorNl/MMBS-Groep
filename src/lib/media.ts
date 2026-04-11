@@ -15,5 +15,5 @@ export function resolveOgImageUrl(src: string | undefined | null): string {
     if (s.startsWith("http")) return s;
     return `${SITE_CONFIG.url}${s.startsWith("/") ? "" : "/"}${s}`;
   }
-  return `${SITE_CONFIG.url}/opengraph-image.png`;
+  return `${SITE_CONFIG.url}/opengraph-image`;
 }

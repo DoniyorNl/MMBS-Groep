@@ -1,0 +1,17 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api/
+
+# *
+User-agent: *
+Disallow: /_next/
+
+# Host
+Host: https://mmbs-groep.nl
+
+# Sitemaps
+Sitemap: https://mmbs-groep.nl/sitemap.xml
