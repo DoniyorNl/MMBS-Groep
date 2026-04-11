@@ -27,7 +27,7 @@ Bijzonder aan dit project is de historische context. Alle materialen worden zorg
 
 Het project creëert werkgelegenheid voor circa 35 medewerkers van MMBS Groep. Directeur Jan van der Berg: "Wij zijn trots op dit vertrouwen van de Gemeente Utrecht. Dit project past perfect bij onze expertise in monumentale restauratie."
     `.trim(),
-    image: "/images/news/nieuws-1.webp",
+    image: "",
     published: "2026-04-01",
     category: "company",
     author: "Redactie MMBS",
@@ -58,7 +58,7 @@ Bij MMBS Groep werken we altijd met gecertificeerde materialen en getraind perso
 
 In 2026 zijn er aantrekkelijke subsidies beschikbaar voor buitengevelisolatie. Vraag bij ons naar de mogelijkheden voor uw situatie.
     `.trim(),
-    image: "/images/news/nieuws-2.webp",
+    image: "",
     published: "2026-03-18",
     category: "industry",
     author: "Technisch Team MMBS",
@@ -88,7 +88,7 @@ Projectontwikkelaar VastgoedPro is zeer tevreden: "MMBS Groep heeft ons project 
 
 Een team van 18 MMBS-medewerkers heeft 6 maanden lang aan dit project gewerkt. Projectleider Marco de Vries: "De samenwerking met alle partijen verliep uitstekend. Een mooi project om terug op te kijken."
     `.trim(),
-    image: "/images/news/nieuws-3.webp",
+    image: "",
     published: "2026-03-05",
     category: "project",
     author: "Marco de Vries",
@@ -113,7 +113,7 @@ MMBS Groep investeert sterk in de opleiding van medewerkers. Alle nieuwe medewer
 
 Wij zijn altijd op zoek naar gemotiveerde vakmensen. Bekijk onze vacaturepagina voor de actuele openstaande posities, of stuur een open sollicitatie naar hr@mmbs.nl.
     `.trim(),
-    image: "/images/news/nieuws-4.webp",
+    image: "",
     published: "2026-02-20",
     category: "company",
     author: "HR Afdeling MMBS",

@@ -1,5 +1,7 @@
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { SITE_CONFIG } from "@/lib/constants";
+import { generateText } from "ai";
 import { NextResponse } from "next/server";
-import { SITE_CONFIG, SERVICE_SLUGS } from "@/lib/constants";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -18,8 +20,9 @@ Diensten: metselwerk, gevelrenovatie, monumentale restauratie, isolatie (spouwmu
 Contactgegevens: ${SITE_CONFIG.phone} | ${SITE_CONFIG.email} | ${SITE_CONFIG.address.full}
 Openingstijden: ${SITE_CONFIG.hours}
 
-Beantwoord vragen kort en vriendelijk. Verwijs voor offerte altijd door naar contact of tel:${SITE_CONFIG.phone}.
-Als je een vraag niet kunt beantwoorden, zeg dat dan eerlijk en stel voor contact op te nemen.
+Beantwoord vragen kort en vriendelijk. Verwijs voor offerte naar contact of tel:${SITE_CONFIG.phone}.
+Als je een vraag niet kunt beantwoorden, zeg dat eerlijk en stel voor contact op te nemen.
+Antwoord in hetzelfde taalniveau als de gebruiker (Nederlands of Engels op basis van de vraag).
 `.trim();
 
 function buildRuleBasedReply(message: string, locale: string): string | null {
@@ -29,8 +32,8 @@ function buildRuleBasedReply(message: string, locale: string): string | null {
   const keywords: Array<{ match: string[]; nl: string; en: string }> = [
     {
       match: ["prijs", "kosten", "offerte", "price", "cost", "quote"],
-      nl: `Voor een nauwkeurige offerte kunt u ons bereiken via ${SITE_CONFIG.phoneFormatted} of stuur een e-mail naar ${SITE_CONFIG.email}. U kunt ook onze offertetool gebruiken op de contactpagina.`,
-      en: `For an accurate quote, please contact us at ${SITE_CONFIG.phoneFormatted} or email ${SITE_CONFIG.email}. You can also use our quote tool on the contact page.`,
+      nl: `Voor een nauwkeurige offerte kunt u ons bereiken via ${SITE_CONFIG.phoneFormatted} of stuur een e-mail naar ${SITE_CONFIG.email}. U kunt ook onze offertepagina gebruiken.`,
+      en: `For an accurate quote, please contact us at ${SITE_CONFIG.phoneFormatted} or email ${SITE_CONFIG.email}. You can also use our quote page.`,
     },
     {
       match: ["openingstijden", "uren", "open", "hours"],
@@ -83,6 +86,13 @@ function buildRuleBasedReply(message: string, locale: string): string | null {
   return null;
 }
 
+function fallbackReply(locale: string): string {
+  const isNl = locale !== "en";
+  return isNl
+    ? `Bedankt voor uw vraag! Voor een persoonlijk antwoord kunt u ons bereiken op ${SITE_CONFIG.phoneFormatted} of ${SITE_CONFIG.email}. Wij staan u graag te woord!`
+    : `Thank you for your question! For a personal answer, please contact us at ${SITE_CONFIG.phoneFormatted} or ${SITE_CONFIG.email}. We are happy to help!`;
+}
+
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as ChatPayload;
@@ -98,17 +108,31 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Last message must be from user" }, { status: 400 });
     }
 
-    // Rule-based reply (works without external AI)
+    const apiKey =
+      process.env.GEMINI_API_KEY?.trim() ?? process.env.GOOGLE_GENERATIVE_AI_API_KEY?.trim();
+
+    if (apiKey) {
+      try {
+        const google = createGoogleGenerativeAI({ apiKey });
+        const { text } = await generateText({
+          model: google("gemini-2.0-flash"),
+          system: SYSTEM_CONTEXT,
+          prompt: lastMessage.content,
+          maxOutputTokens: 512,
+        });
+        const trimmed = text?.trim();
+        if (trimmed) {
+          return NextResponse.json({ reply: trimmed, source: "gemini" }, { status: 200 });
+        }
+      } catch (err) {
+        console.error("[chat] Gemini error:", err);
+      }
+    }
+
     const rulesReply = buildRuleBasedReply(lastMessage.content, locale);
-    const isNl = locale !== "en";
+    const reply = rulesReply ?? fallbackReply(locale);
 
-    const reply =
-      rulesReply ??
-      (isNl
-        ? `Bedankt voor uw vraag! Voor een persoonlijk antwoord kunt u ons bereiken op ${SITE_CONFIG.phoneFormatted} of ${SITE_CONFIG.email}. Wij staan u graag te woord!`
-        : `Thank you for your question! For a personal answer, please contact us at ${SITE_CONFIG.phoneFormatted} or ${SITE_CONFIG.email}. We are happy to help!`);
-
-    return NextResponse.json({ reply }, { status: 200 });
+    return NextResponse.json({ reply, source: "rules" }, { status: 200 });
   } catch {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }

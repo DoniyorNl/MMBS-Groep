@@ -2,7 +2,9 @@
 
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ProjectVisualPlaceholder } from "@/components/ui/VisualPlaceholder";
 import { projects } from "@/data/projects";
+import { hasMediaUrl } from "@/lib/media";
 import type { Project } from "@/types";
 import { cn } from "@/lib/utils";
 import { ArrowRight, MapPin } from "lucide-react";
@@ -91,15 +93,19 @@ export default function ProjectenPage() {
                   href={`/${locale}/projecten/${project.slug}`}
                   className="group block overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] transition-all duration-300 hover:border-[var(--color-accent)]/30 hover:shadow-2xl hover:shadow-[var(--color-accent-muted)]"
                 >
-                  {/* Image */}
+                  {/* Image or placeholder */}
                   <div className="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-hover)]">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                    {hasMediaUrl(project.image) ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <ProjectVisualPlaceholder type={project.type} />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
                       <Badge>{project.type}</Badge>

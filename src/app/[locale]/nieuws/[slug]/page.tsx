@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getArticleBySlug, getRecentArticles, newsArticles } from "@/data/nieuws";
 import { SITE_CONFIG } from "@/lib/constants";
+import { hasMediaUrl, resolveOgImageUrl } from "@/lib/media";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -11,6 +12,7 @@ import {
   ChevronLeft,
   User,
 } from "lucide-react";
+import { NewsVisualPlaceholder } from "@/components/ui/VisualPlaceholder";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -36,7 +38,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     openGraph: {
       title: `${article.title} | ${SITE_CONFIG.name}`,
       description: article.excerpt,
-      images: [{ url: article.image }],
+      images: [{ url: resolveOgImageUrl(article.image) }],
       type: "article",
       publishedTime: article.published,
       authors: [article.author],
@@ -88,16 +90,20 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </div>
       </div>
 
-      {/* Hero image */}
+      {/* Hero */}
       <div className="relative aspect-[21/9] w-full overflow-hidden bg-[var(--color-surface-hover)]">
-        <Image
-          src={article.image}
-          alt={article.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        {hasMediaUrl(article.image) ? (
+          <Image
+            src={article.image}
+            alt={article.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        ) : (
+          <NewsVisualPlaceholder category={article.category} className="absolute inset-0" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent" />
       </div>
 
@@ -176,13 +182,17 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                         className="group flex gap-3"
                       >
                         <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-lg bg-[var(--color-surface-hover)]">
-                          <Image
-                            src={a.image}
-                            alt={a.title}
-                            fill
-                            sizes="80px"
-                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
+                          {hasMediaUrl(a.image) ? (
+                            <Image
+                              src={a.image}
+                              alt={a.title}
+                              fill
+                              sizes="80px"
+                              className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
+                          ) : (
+                            <NewsVisualPlaceholder category={a.category} iconClassName="!h-8 !w-8 !min-h-0 !min-w-0" />
+                          )}
                         </div>
                         <div>
                           <h4 className="line-clamp-2 text-sm font-semibold leading-snug group-hover:text-[var(--color-accent)] transition-colors">

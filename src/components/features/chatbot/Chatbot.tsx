@@ -23,18 +23,20 @@ export function Chatbot({ locale }: ChatbotProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const welcome: Message = { role: "assistant", content: t("welcome") };
+  const welcomeText = t("welcome");
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
   useEffect(() => {
-    if (open) {
-      if (messages.length === 0) setMessages([welcome]);
-      setTimeout(() => inputRef.current?.focus(), 100);
-    }
-  }, [open]);
+    if (!open) return;
+    setMessages((prev) =>
+      prev.length === 0 ? [{ role: "assistant", content: welcomeText }] : prev,
+    );
+    const focusTimer = setTimeout(() => inputRef.current?.focus(), 100);
+    return () => clearTimeout(focusTimer);
+  }, [open, welcomeText]);
 
   useEffect(() => {
     scrollToBottom();

@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { SITE_CONFIG } from "@/lib/constants";
 import type { Metadata } from "next";

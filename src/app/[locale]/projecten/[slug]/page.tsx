@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getProjectBySlug, projects } from "@/data/projects";
 import { SITE_CONFIG } from "@/lib/constants";
+import { hasMediaUrl, resolveOgImageUrl } from "@/lib/media";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -15,6 +16,7 @@ import {
   Ruler,
   User,
 } from "lucide-react";
+import { ProjectVisualPlaceholder } from "@/components/ui/VisualPlaceholder";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -41,7 +43,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     openGraph: {
       title: `${project.title} | ${SITE_CONFIG.name}`,
       description: project.description.slice(0, 160),
-      images: [{ url: project.image }],
+      images: [{ url: resolveOgImageUrl(project.image) }],
     },
   };
 }
@@ -82,17 +84,21 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         </div>
       </div>
 
-      {/* Hero Image */}
+      {/* Hero */}
       <section className="relative">
         <div className="relative aspect-[21/9] w-full overflow-hidden bg-[var(--color-surface-hover)]">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          {hasMediaUrl(project.image) ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          ) : (
+            <ProjectVisualPlaceholder type={project.type} className="absolute inset-0" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-transparent to-transparent" />
         </div>
       </section>
@@ -113,27 +119,29 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 </p>
               </ScrollReveal>
 
-              {/* Gallery */}
-              {project.images.length > 1 && (
+              {/* Gallery — only real media URLs */}
+              {project.images.filter((u) => hasMediaUrl(u)).length > 1 && (
                 <ScrollReveal delay={0.1}>
                   <h2 className="font-display mb-4 text-2xl font-bold">
                     {isNl ? "Projectfoto's" : "Project photos"}
                   </h2>
                   <div className="grid grid-cols-2 gap-4">
-                    {project.images.map((img, i) => (
-                      <div
-                        key={i}
-                        className="relative aspect-[4/3] overflow-hidden rounded-xl bg-[var(--color-surface-hover)]"
-                      >
-                        <Image
-                          src={img}
-                          alt={`${project.title} — foto ${i + 1}`}
-                          fill
-                          sizes="(max-width: 1024px) 50vw, 33vw"
-                          className="object-cover transition-transform duration-300 hover:scale-105"
-                        />
-                      </div>
-                    ))}
+                    {project.images
+                      .filter((u) => hasMediaUrl(u))
+                      .map((img, i) => (
+                        <div
+                          key={img + i}
+                          className="relative aspect-[4/3] overflow-hidden rounded-xl bg-[var(--color-surface-hover)]"
+                        >
+                          <Image
+                            src={img}
+                            alt={`${project.title} — foto ${i + 1}`}
+                            fill
+                            sizes="(max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-300 hover:scale-105"
+                          />
+                        </div>
+                      ))}
                   </div>
                 </ScrollReveal>
               )}
@@ -246,7 +254,17 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                     className="group block overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] transition-all duration-300 hover:border-[var(--color-accent)]/30 hover:shadow-lg"
                   >
                     <div className="relative aspect-[4/3] overflow-hidden">
-                      <Image src={p.image} alt={p.title} fill sizes="33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      {hasMediaUrl(p.image) ? (
+                        <Image
+                          src={p.image}
+                          alt={p.title}
+                          fill
+                          sizes="33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <ProjectVisualPlaceholder type={p.type} />
+                      )}
                     </div>
                     <div className="p-4">
                       <h3 className="font-display mb-1 text-base font-bold leading-snug group-hover:text-[var(--color-accent)] transition-colors">

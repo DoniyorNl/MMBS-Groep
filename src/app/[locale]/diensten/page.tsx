@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ServiceVisualPlaceholder } from "@/components/ui/VisualPlaceholder";
 import { services } from "@/data/services";
+import { hasMediaUrl } from "@/lib/media";
 import { SITE_CONFIG } from "@/lib/constants";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -80,15 +82,19 @@ export default async function DienstenPage({ params }: DienstenPageProps) {
                     href={`/${locale}/diensten/${service.slug}`}
                     className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] transition-all duration-300 hover:border-[var(--color-accent)]/40 hover:shadow-2xl hover:shadow-[var(--color-accent-muted)]"
                   >
-                    {/* Image */}
+                    {/* Image or icon placeholder */}
                     <div className="relative aspect-[16/7] overflow-hidden bg-[var(--color-surface-hover)]">
-                      <Image
-                        src={service.image}
-                        alt={t(`items.${service.slug}.title`)}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+                      {hasMediaUrl(service.image) ? (
+                        <Image
+                          src={service.image}
+                          alt={t(`items.${service.slug}.title`)}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <ServiceVisualPlaceholder slug={service.slug} />
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] via-transparent to-transparent" />
                     </div>
 

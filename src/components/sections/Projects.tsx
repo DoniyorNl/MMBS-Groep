@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ProjectVisualPlaceholder } from "@/components/ui/VisualPlaceholder";
 import { getFeaturedProjects } from "@/data/projects";
+import { hasMediaUrl } from "@/lib/media";
 import { ArrowRight, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -42,15 +44,19 @@ export function Projects({ locale }: ProjectsProps) {
                 href={`/${locale}/projecten/${project.slug}`}
                 className="group block overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-background)] transition-all duration-300 hover:border-[var(--color-accent)]/30 hover:shadow-xl hover:shadow-[var(--color-accent-muted)]"
               >
-                {/* Image */}
+                {/* Image or icon placeholder */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-hover)]">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  {hasMediaUrl(project.image) ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <ProjectVisualPlaceholder type={project.type} />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
                   {/* Badge overlay */}

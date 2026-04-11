@@ -1,9 +1,9 @@
-import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getServiceBySlug, services } from "@/data/services";
 import { PRICING } from "@/data/calculator";
 import { projects } from "@/data/projects";
 import { SITE_CONFIG, SERVICE_SLUGS, type ServiceSlug } from "@/lib/constants";
+import { hasMediaUrl, resolveOgImageUrl } from "@/lib/media";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -18,6 +18,7 @@ import {
   MapPin,
   Wrench,
 } from "lucide-react";
+import { ProjectVisualPlaceholder, ServiceVisualPlaceholder } from "@/components/ui/VisualPlaceholder";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -94,7 +95,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     openGraph: {
       title: `${title} | ${SITE_CONFIG.name}`,
       description,
-      images: [{ url: service.image }],
+      images: [{ url: resolveOgImageUrl(service.image) }],
     },
   };
 }
@@ -141,14 +142,18 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
       {/* Hero */}
       <section className="relative overflow-hidden bg-[var(--color-background)]">
         <div className="relative aspect-[21/9] w-full">
-          <Image
-            src={service.image}
-            alt={t(`items.${slug}.title`)}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
+          {hasMediaUrl(service.image) ? (
+            <Image
+              src={service.image}
+              alt={t(`items.${slug}.title`)}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          ) : (
+            <ServiceVisualPlaceholder slug={slug} className="absolute inset-0" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)] via-[var(--color-background)]/60 to-transparent" />
         </div>
 
@@ -206,13 +211,17 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                         className="group block overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] transition-all duration-300 hover:border-[var(--color-accent)]/30 hover:shadow-lg"
                       >
                         <div className="relative aspect-[4/3] overflow-hidden">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            sizes="(max-width: 640px) 100vw, 33vw"
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
+                          {hasMediaUrl(project.image) ? (
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              sizes="(max-width: 640px) 100vw, 33vw"
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          ) : (
+                            <ProjectVisualPlaceholder type={project.type} />
+                          )}
                         </div>
                         <div className="p-4">
                           <h3 className="font-display mb-1 text-sm font-bold leading-tight group-hover:text-[var(--color-accent)] transition-colors">

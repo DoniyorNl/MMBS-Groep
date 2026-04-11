@@ -1,6 +1,8 @@
 import { Badge } from "@/components/ui/Badge";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { NewsVisualPlaceholder } from "@/components/ui/VisualPlaceholder";
 import { newsArticles } from "@/data/nieuws";
+import { hasMediaUrl } from "@/lib/media";
 import { SITE_CONFIG } from "@/lib/constants";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -86,14 +88,18 @@ export default async function NieuwsPage({ params }: NieuwsPageProps) {
                 className="group grid grid-cols-1 overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] transition-all duration-300 hover:border-[var(--color-accent)]/30 hover:shadow-2xl hover:shadow-[var(--color-accent-muted)] lg:grid-cols-2"
               >
                 <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-surface-hover)] lg:aspect-auto">
-                  <Image
-                    src={featured.image}
-                    alt={featured.title}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                  {hasMediaUrl(featured.image) ? (
+                    <Image
+                      src={featured.image}
+                      alt={featured.title}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <NewsVisualPlaceholder category={featured.category} className="min-h-[200px] lg:min-h-full" />
+                  )}
                 </div>
                 <div className="flex flex-col justify-center p-8 lg:p-10">
                   <div className="mb-4 flex flex-wrap items-center gap-3">
@@ -127,13 +133,17 @@ export default async function NieuwsPage({ params }: NieuwsPageProps) {
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] transition-all duration-300 hover:border-[var(--color-accent)]/30 hover:shadow-lg"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden bg-[var(--color-surface-hover)]">
-                    <Image
-                      src={article.image}
-                      alt={article.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                    {hasMediaUrl(article.image) ? (
+                      <Image
+                        src={article.image}
+                        alt={article.title}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <NewsVisualPlaceholder category={article.category} />
+                    )}
                   </div>
                   <div className="flex flex-1 flex-col p-5">
                     <div className="mb-3 flex flex-wrap items-center gap-2">
