@@ -7,10 +7,6 @@ interface ChatMessage {
   content: string
 }
 
-const client = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-})
-
 const SYSTEM_CONTEXT = `
 You are a helpful AI assistant for ${rules.company.name}, a construction and facade renovation company in the Netherlands.
 
@@ -43,6 +39,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "No messages" }, { status: 400 })
     }
 
+    const apiKey = process.env.GROQ_API_KEY
+    if (!apiKey) {
+      console.error("[chat] GROQ_API_KEY missing")
+      return NextResponse.json({ error: "API key missing" }, { status: 500 })
+    }
+
+    // ✅ Client request vaqtida yaratiladi — build da emas
+    const client = new Groq({ apiKey })
+
     const chatMessages = messages.map((m: ChatMessage) => ({
       role: m.role,
       content: m.content,
@@ -58,7 +63,6 @@ export async function POST(request: Request) {
     })
 
     const reply = completion.choices[0]?.message?.content?.trim()
-
     return NextResponse.json({ reply: reply ?? "...", source: "groq" })
 
   } catch (err) {
