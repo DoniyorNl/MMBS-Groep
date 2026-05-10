@@ -1,4 +1,5 @@
 # MMBS Groep — Website Rebuild
+
 ## Senior-Level Project Plan | 0 → Production Ready
 
 > **Stack:** Next.js 15 · TypeScript · Tailwind CSS v4 · Framer Motion · i18next · Vercel  
@@ -25,69 +26,79 @@
 ## 1. Tech Stack & Versions
 
 ### Core
-| Package | Version | Reason |
-|---|---|---|
-| `next` | `15.3.0` | App Router, Server Components, Turbopack |
-| `react` | `19.0.0` | Latest stable |
-| `react-dom` | `19.0.0` | Latest stable |
-| `typescript` | `5.7.3` | Strict typing |
+
+| Package      | Version  | Reason                                   |
+| ------------ | -------- | ---------------------------------------- |
+| `next`       | `15.3.0` | App Router, Server Components, Turbopack |
+| `react`      | `19.0.0` | Latest stable                            |
+| `react-dom`  | `19.0.0` | Latest stable                            |
+| `typescript` | `5.7.3`  | Strict typing                            |
 
 ### Styling
-| Package | Version | Reason |
-|---|---|---|
-| `tailwindcss` | `4.1.3` | CSS-first config (v4 — NO tailwind.config.ts!) |
-| `@tailwindcss/typography` | `0.5.16` | Rich text styling |
-| `clsx` | `2.1.1` | Conditional classNames |
-| `tailwind-merge` | `2.5.4` | Merge tw classes safely |
+
+| Package                   | Version  | Reason                                         |
+| ------------------------- | -------- | ---------------------------------------------- |
+| `tailwindcss`             | `4.1.3`  | CSS-first config (v4 — NO tailwind.config.ts!) |
+| `@tailwindcss/typography` | `0.5.16` | Rich text styling                              |
+| `clsx`                    | `2.1.1`  | Conditional classNames                         |
+| `tailwind-merge`          | `2.5.4`  | Merge tw classes safely                        |
 
 ### Animation
-| Package | Version | Reason |
-|---|---|---|
+
+| Package  | Version   | Reason                      |
+| -------- | --------- | --------------------------- |
 | `motion` | `11.15.0` | Framer Motion v11 (renamed) |
 
 ### Internationalization (i18n)
-| Package | Version | Reason |
-|---|---|---|
+
+| Package     | Version  | Reason                        |
+| ----------- | -------- | ----------------------------- |
 | `next-intl` | `3.26.3` | Best Next.js 15 i18n solution |
 
 ### Forms & Validation
-| Package | Version | Reason |
-|---|---|---|
-| `react-hook-form` | `7.54.2` | Performant forms |
-| `zod` | `3.24.1` | Schema validation |
-| `@hookform/resolvers` | `3.9.1` | zod + react-hook-form bridge |
+
+| Package               | Version  | Reason                       |
+| --------------------- | -------- | ---------------------------- |
+| `react-hook-form`     | `7.54.2` | Performant forms             |
+| `zod`                 | `3.24.1` | Schema validation            |
+| `@hookform/resolvers` | `3.9.1`  | zod + react-hook-form bridge |
 
 ### Email
-| Package | Version | Reason |
-|---|---|---|
-| `resend` | `4.0.0` | Best DX, free tier 3000/mo |
-| `react-email` | `3.0.4` | Beautiful email templates |
+
+| Package       | Version | Reason                     |
+| ------------- | ------- | -------------------------- |
+| `resend`      | `4.0.0` | Best DX, free tier 3000/mo |
+| `react-email` | `3.0.4` | Beautiful email templates  |
 
 ### AI Chatbot
-| Package | Version | Reason |
-|---|---|---|
+
+| Package          | Version  | Reason                                 |
+| ---------------- | -------- | -------------------------------------- |
 | `@ai-sdk/google` | `1.2.18` | Vercel AI SDK — Google Gemini provider |
-| `ai` | `4.1.54` | Vercel AI SDK — streaming core |
+| `ai`             | `4.1.54` | Vercel AI SDK — streaming core         |
 
 ### Icons & Assets
-| Package | Version | Reason |
-|---|---|---|
+
+| Package        | Version   | Reason              |
+| -------------- | --------- | ------------------- |
 | `lucide-react` | `0.469.0` | Minimal clean icons |
 
 ### Fonts (Google Fonts via next/font)
+
 - **Display:** `Syne` — geometric, architectural feel
 - **Body:** `DM Sans` — clean, modern, readable
 
 ### Dev Tools
-| Package | Version | Reason |
-|---|---|---|
-| `eslint` | `9.18.0` | Linting |
-| `eslint-config-next` | `15.3.0` | Next.js ESLint rules |
-| `prettier` | `3.4.2` | Code formatting |
-| `prettier-plugin-tailwindcss` | `0.6.11` | Auto sort tw classes |
-| `@types/node` | `22.10.5` | Node types |
-| `@types/react` | `19.0.7` | React types |
-| `@types/react-dom` | `19.0.3` | ReactDOM types |
+
+| Package                       | Version   | Reason               |
+| ----------------------------- | --------- | -------------------- |
+| `eslint`                      | `9.18.0`  | Linting              |
+| `eslint-config-next`          | `15.3.0`  | Next.js ESLint rules |
+| `prettier`                    | `3.4.2`   | Code formatting      |
+| `prettier-plugin-tailwindcss` | `0.6.11`  | Auto sort tw classes |
+| `@types/node`                 | `22.10.5` | Node types           |
+| `@types/react`                | `19.0.7`  | React types          |
+| `@types/react-dom`            | `19.0.3`  | ReactDOM types       |
 
 ---
 
@@ -284,18 +295,18 @@ mmbs-website/
 ```css
 /* globals.css */
 :root {
-  --background: #0A0A0A;          /* Near black */
-  --surface: #111111;             /* Card background */
-  --surface-hover: #1A1A1A;
+  --background: #0a0a0a; /* Near black */
+  --surface: #111111; /* Card background */
+  --surface-hover: #1a1a1a;
   --border: #222222;
-  --text-primary: #F5F5F0;        /* Warm white */
+  --text-primary: #f5f5f0; /* Warm white */
   --text-secondary: #888888;
   --text-muted: #555555;
-  --accent: #C8A96E;              /* Warm gold — construction feel */
-  --accent-hover: #D4B97E;
+  --accent: #c8a96e; /* Warm gold — construction feel */
+  --accent-hover: #d4b97e;
   --accent-muted: rgba(200, 169, 110, 0.1);
-  --error: #FF4444;
-  --success: #44BB77;
+  --error: #ff4444;
+  --success: #44bb77;
 }
 ```
 
@@ -309,9 +320,11 @@ Mono:     JetBrains Mono — code/numbers
 ```
 
 ### Spacing System
+
 Tailwind default spacing — consistent 4px base unit.
 
 ### Animation Principles
+
 - **Entrance:** fade-up, 0.4s ease-out, staggered 0.1s delay
 - **Hover:** subtle scale(1.02), 0.2s
 - **Page transition:** opacity 0→1, 0.3s
@@ -323,6 +336,7 @@ Tailwind default spacing — consistent 4px base unit.
 ## 5. Pages Architecture
 
 ### 🏠 Homepage `/`
+
 ```
 Hero          → Full viewport, headline + CTA + reel video background
 Stats         → 20+ yil, 1500+ proyekt, 100+ mutaxassis (animated counters)
@@ -334,37 +348,44 @@ CTA           → "Offerte aanvragen" dark section
 ```
 
 ### 🏗 Services `/diensten`
+
 - Grid of 5 service cards
 - Each card: image, title, short description, arrow link
 
 ### 🏗 Single Service `/diensten/[slug]`
+
 - Hero image
 - Full description
 - Related projects
 - CTA block
 
 ### 📁 Projects `/projecten`
+
 - Masonry/grid layout
 - Filter by type (Restauratie, Nieuwbouw, etc.)
 - Each card: image, title, location, type badge
 
 ### 📁 Single Project `/projecten/[slug]`
+
 - Image gallery
 - Project details (type, location, year, client)
 - Description
 - Related projects
 
 ### 📞 Contact `/contact`
+
 - Contact form (react-hook-form + zod)
 - **Quote Calculator** (multi-step)
 - Map embed (Google Maps iframe)
 - Contact info
 
 ### 💼 Vacatures `/vacatures`
+
 - Open positions list
 - Application form
 
 ### 📰 Nieuws `/nieuws`
+
 - News cards grid
 - Single article page
 
@@ -373,6 +394,7 @@ CTA           → "Offerte aanvragen" dark section
 ## 6. Features Roadmap
 
 ### Phase 1 — Core (MVP)
+
 - [ ] Project setup + design system
 - [ ] middleware.ts (next-intl — REQUIRED)
 - [ ] Header/Footer/Navigation
@@ -390,12 +412,14 @@ CTA           → "Offerte aanvragen" dark section
 - [ ] Privacy Policy page
 
 ### Phase 2 — Advanced Features
+
 - [ ] AI Chatbot (Gemini + Vercel AI SDK streaming)
 - [ ] Quote Calculator (multi-step)
 - [ ] Email templates (react-email)
 - [ ] Vacature application form
 
 ### Phase 3 — Polish
+
 - [ ] Page transitions (Motion)
 - [ ] Scroll animations (ScrollReveal)
 - [ ] Animated counters
@@ -410,6 +434,7 @@ CTA           → "Offerte aanvragen" dark section
 ## 7. Development Phases
 
 ### 🔧 Phase 0 — Setup (Day 1)
+
 ```bash
 # 1. Create project
 npx create-next-app@latest mmbs-website \
@@ -433,12 +458,13 @@ cp .env.example .env.local
 ```
 
 **.env.example:**
+
 ```env
 # Resend
 RESEND_API_KEY=
 
 # Gemini
-GEMINI_API_KEY=
+GROQ_API_KEY=
 
 # Site
 NEXT_PUBLIC_SITE_URL=https://mmbs-website.vercel.app
@@ -453,6 +479,7 @@ CONTACT_EMAIL=info@mmbs.nl
 ### 🎨 Phase 1 — Design System (Day 1-2)
 
 **Checklist:**
+
 - [ ] `globals.css` — CSS variables, base styles + `@theme` block (Tailwind v4 config)
 - [ ] `next/font` setup (Syne + DM Sans)
 - [ ] `lib/utils.ts` — `cn()` helper
@@ -468,17 +495,19 @@ CONTACT_EMAIL=info@mmbs.nl
 ### 🌍 Phase 2 — i18n Setup (Day 2)
 
 **next-intl config:**
+
 ```typescript
 // src/i18n/routing.ts
-import { defineRouting } from 'next-intl/routing';
+import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
-  locales: ['nl', 'en'],
-  defaultLocale: 'nl',
+  locales: ["nl", "en"],
+  defaultLocale: "nl",
 });
 ```
 
 **Translation structure (messages/nl.json):**
+
 ```json
 {
   "nav": {
@@ -503,12 +532,14 @@ export const routing = defineRouting({
 ### 🏗 Phase 3 — Layout Components (Day 2-3)
 
 **Header features:**
+
 - Sticky with backdrop blur on scroll
 - Logo left, nav center, CTA + language switcher right
 - Mobile: hamburger → fullscreen overlay menu
 - Active link indicator
 
 **Footer features:**
+
 - 3 column: logo+description, navigation, contact info
 - Bottom bar: copyright + legal links
 - Social media icons (LinkedIn, Instagram)
@@ -518,6 +549,7 @@ export const routing = defineRouting({
 ### 📄 Phase 4 — Pages (Day 3-7)
 
 Order of development:
+
 1. **Homepage** — highest priority, most complex
 2. **Services** overview + single pages
 3. **Projects** grid + single pages
@@ -531,6 +563,7 @@ Order of development:
 ### 🤖 Phase 5 — AI Chatbot (Day 7-8)
 
 **Architecture:**
+
 ```
 User types → ChatWidget.tsx
            → POST /api/chat
@@ -540,6 +573,7 @@ User types → ChatWidget.tsx
 ```
 
 **System prompt for MMBS bot:**
+
 ```typescript
 const SYSTEM_PROMPT = `
 Je bent een vriendelijke assistent voor MMBS Groep, 
@@ -558,19 +592,20 @@ Wees kort, professioneel en behulpzaam.
 ```
 
 **API Route (`/api/chat/route.ts`):**
+
 ```typescript
-import { streamText } from 'ai';
-import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import { streamText } from "ai";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
 
 const google = createGoogleGenerativeAI({
-  apiKey: process.env.GEMINI_API_KEY!,
+  apiKey: process.env.GROQ_API_KEY!,
 });
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
-  
+
   const result = streamText({
-    model: google('gemini-2.0-flash'),
+    model: google("gemini-2.0-flash"),
     system: SYSTEM_PROMPT,
     messages,
     maxTokens: 500,
@@ -585,6 +620,7 @@ export async function POST(req: Request) {
 ### 🧮 Phase 6 — Quote Calculator (Day 8-9)
 
 **Multi-step form:**
+
 ```
 Step 1: Xizmat tanlash
   → Metselwerk | Gevelrenovatie | Monumentale restauratie | Isolatie | Steigerbouw
@@ -601,13 +637,14 @@ Step 3: Ma'lumotlar
 ```
 
 **Pricing logic (`/data/calculator.ts`):**
+
 ```typescript
 export const PRICING = {
-  metselwerk: { base: 85, unit: 'm2' },        // €85/m²
-  gevelrenovatie: { base: 65, unit: 'm2' },    // €65/m²
-  monumentale: { base: 150, unit: 'm2' },      // €150/m²
-  isolatie: { base: 45, unit: 'm2' },          // €45/m²
-  steigerbouw: { base: 25, unit: 'm2' },       // €25/m²
+  metselwerk: { base: 85, unit: "m2" }, // €85/m²
+  gevelrenovatie: { base: 65, unit: "m2" }, // €65/m²
+  monumentale: { base: 150, unit: "m2" }, // €150/m²
+  isolatie: { base: 45, unit: "m2" }, // €45/m²
+  steigerbouw: { base: 25, unit: "m2" }, // €25/m²
 } as const;
 // Note: These are indicative prices only — actual quote needed
 ```
@@ -617,6 +654,7 @@ export const PRICING = {
 ### 🚀 Phase 7 — Performance & SEO (Day 9-10)
 
 **Performance checklist:**
+
 - [ ] All images: `next/image` with `sizes` prop
 - [ ] Images: WebP format, proper aspect ratios
 - [ ] Fonts: `next/font` (no external requests)
@@ -626,6 +664,7 @@ export const PRICING = {
 - [ ] No unused CSS
 
 **SEO checklist:**
+
 - [ ] `metadata` export on every page
 - [ ] `generateMetadata` for dynamic pages
 - [ ] Open Graph image (1200x630)
@@ -636,23 +675,24 @@ export const PRICING = {
 - [ ] Alt text on ALL images
 
 **JSON-LD Schema:**
+
 ```typescript
 // In root layout
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "MMBS Groep",
-  "description": "Specialist in geveloplossingen en bouwprojecten",
-  "url": "https://mmbs.nl",
-  "telephone": "+31306865447",
-  "address": {
+  name: "MMBS Groep",
+  description: "Specialist in geveloplossingen en bouwprojecten",
+  url: "https://mmbs.nl",
+  telephone: "+31306865447",
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": "Strijkviertel 60",
-    "postalCode": "3454 PP",
-    "addressLocality": "Utrecht",
-    "addressCountry": "NL"
-  }
-}
+    streetAddress: "Strijkviertel 60",
+    postalCode: "3454 PP",
+    addressLocality: "Utrecht",
+    addressCountry: "NL",
+  },
+};
 ```
 
 ---
@@ -661,13 +701,13 @@ const structuredData = {
 
 ### Target: Lighthouse 95+ (all categories)
 
-| Metric | Target | Strategy |
-|---|---|---|
-| LCP | < 2.0s | Hero image preload, next/image priority |
-| FID/INP | < 100ms | Minimal JS, no blocking scripts |
-| CLS | < 0.05 | Image dimensions, font swap |
-| TTFB | < 0.6s | Vercel Edge, Server Components |
-| Bundle | < 150kb JS | Dynamic imports, tree-shaking |
+| Metric  | Target     | Strategy                                |
+| ------- | ---------- | --------------------------------------- |
+| LCP     | < 2.0s     | Hero image preload, next/image priority |
+| FID/INP | < 100ms    | Minimal JS, no blocking scripts         |
+| CLS     | < 0.05     | Image dimensions, font swap             |
+| TTFB    | < 0.6s     | Vercel Edge, Server Components          |
+| Bundle  | < 150kb JS | Dynamic imports, tree-shaking           |
 
 ### Server vs Client Components
 
@@ -677,6 +717,7 @@ Client Components ('use client'): interactive UI (chatbot, calculator, forms, an
 ```
 
 ### Image Strategy
+
 ```typescript
 // Every image uses this pattern
 <Image
@@ -695,6 +736,7 @@ Client Components ('use client'): interactive UI (chatbot, calculator, forms, an
 ## 9. SEO Strategy
 
 ### URL Structure
+
 ```
 /              → nl homepage
 /en            → en homepage
@@ -705,12 +747,13 @@ Client Components ('use client'): interactive UI (chatbot, calculator, forms, an
 ```
 
 ### Meta Tags per page
+
 ```typescript
 // app/[locale]/page.tsx
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   return {
-    title: locale === 'nl' 
+    title: locale === 'nl'
       ? 'MMBS Groep — Experts in Geveloplossingen Utrecht'
       : 'MMBS Group — Facade Solutions Experts Utrecht',
     description: '...',
@@ -745,6 +788,7 @@ git push origin main
 ```
 
 **vercel.json:**
+
 ```json
 {
   "headers": [
@@ -759,21 +803,20 @@ git push origin main
     },
     {
       "source": "/fonts/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
   ]
 }
 ```
 
 ### Free Services Used
-| Service | Free Tier |
-|---|---|
-| **Vercel** | Unlimited deploys, 100GB bandwidth |
-| **Resend** | 3,000 emails/month |
-| **Gemini API** | 1M tokens/day (Flash model) |
-| **Google Fonts** | Free via next/font |
+
+| Service          | Free Tier                          |
+| ---------------- | ---------------------------------- |
+| **Vercel**       | Unlimited deploys, 100GB bandwidth |
+| **Resend**       | 3,000 emails/month                 |
+| **Gemini API**   | 1M tokens/day (Flash model)        |
+| **Google Fonts** | Free via next/font                 |
 
 ---
 
@@ -808,4 +851,4 @@ npm run type-check   # TypeScript check
 
 ---
 
-*Plan tayyor — boshlash vaqti!* 🚀
+_Plan tayyor — boshlash vaqti!_ 🚀

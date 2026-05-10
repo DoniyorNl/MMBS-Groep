@@ -6,15 +6,15 @@ Bu hujjatda **men (AI) repoda qilgan ishlar** va **sizning qo‘lingizda qolgan 
 
 ## 1. Repoda allaqachon bor (kod tomonda)
 
-| Nima | Tavsif |
-|------|--------|
-| `npm run build` | Production build |
-| `npm run type-check` | TypeScript tekshiruvi |
-| `npm run lint` | ESLint (`src/**/*`) |
-| `.github/workflows/ci.yml` | Har `push`/`PR` da CI (typecheck + lint + build) |
-| `vercel.json` | Xavfsizlik sarlavhalari (X-Frame-Options, nosniff, …) |
-| API routes | Contact, Quote (Resend), Chat (Gemini + fallback) |
-| `.env.example` | Kerakli o‘zgaruvchilar ro‘yxati (kalitsiz) |
+| Nima                       | Tavsif                                                |
+| -------------------------- | ----------------------------------------------------- |
+| `npm run build`            | Production build                                      |
+| `npm run type-check`       | TypeScript tekshiruvi                                 |
+| `npm run lint`             | ESLint (`src/**/*`)                                   |
+| `.github/workflows/ci.yml` | Har `push`/`PR` da CI (typecheck + lint + build)      |
+| `vercel.json`              | Xavfsizlik sarlavhalari (X-Frame-Options, nosniff, …) |
+| API routes                 | Contact, Quote (Resend), Chat (Gemini + fallback)     |
+| `.env.example`             | Kerakli o‘zgaruvchilar ro‘yxati (kalitsiz)            |
 
 ---
 
@@ -33,13 +33,13 @@ Bu hujjatda **men (AI) repoda qilgan ishlar** va **sizning qo‘lingizda qolgan 
 
 Quyidagilarni **Production** (va kerak bo‘lsa Preview) uchun qo‘shing:
 
-| Kalit | Qiymat | Izoh |
-|-------|--------|------|
-| `RESEND_API_KEY` | `re_...` | [resend.com](https://resend.com) → API Keys |
-| `CONTACT_EMAIL` | sizning pochtangiz | Contact + Quote shu manzilga keladi |
-| `RESEND_FROM_EMAIL` | `MMBS Groep <onboarding@resend.dev>` | Test uchun Resend sandbox. **Production:** o‘z domeningizni Resend’da verify qilgach: `MMBS Groep <noreply@sizning-domen.nl>` |
-| `GEMINI_API_KEY` | `AIza...` | [Google AI Studio](https://aistudio.google.com/apikey) — chatbot |
-| `NEXT_PUBLIC_SITE_URL` | `https://sizning-proyekt.vercel.app` yoki **haqiqiy domen** | Sitemap, canonical, OG URL uchun **muhim** |
+| Kalit                  | Qiymat                                                      | Izoh                                                                                                                          |
+| ---------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `RESEND_API_KEY`       | `re_...`                                                    | [resend.com](https://resend.com) → API Keys                                                                                   |
+| `CONTACT_EMAIL`        | sizning pochtangiz                                          | Contact + Quote shu manzilga keladi                                                                                           |
+| `RESEND_FROM_EMAIL`    | `MMBS Groep <onboarding@resend.dev>`                        | Test uchun Resend sandbox. **Production:** o‘z domeningizni Resend’da verify qilgach: `MMBS Groep <noreply@sizning-domen.nl>` |
+| `GROQ_API_KEY`         | `AIza...`                                                   | [Google AI Studio](https://aistudio.google.com/apikey) — chatbot                                                              |
+| `NEXT_PUBLIC_SITE_URL` | `https://sizning-proyekt.vercel.app` yoki **haqiqiy domen** | Sitemap, canonical, OG URL uchun **muhim**                                                                                    |
 
 **Muhim:**
 
@@ -77,11 +77,11 @@ Keyin `NEXT_PUBLIC_SITE_URL` ni **https://domeningiz.nl** qilib yangilang va qay
 
 ## 5. Sizning vazifangiz — kontent va media
 
-| Nima | Qayerda |
-|------|---------|
+| Nima                    | Qayerda                                                                                                               |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | Haqiqiy loyiha rasmlari | `src/data/projects.ts`, `services.ts`, `nieuws.ts` — `image` va `images[]` maydonlariga `/public/images/...` yo‘llari |
-| Fayllarni joylash | `public/images/projects/`, `public/images/services/`, … (WebP tavsiya) |
-| Matnlar | `messages/nl.json`, `messages/en.json`, `src/data/*` |
+| Fayllarni joylash       | `public/images/projects/`, `public/images/services/`, … (WebP tavsiya)                                                |
+| Matnlar                 | `messages/nl.json`, `messages/en.json`, `src/data/*`                                                                  |
 
 Hozir rasmlar bo‘lmaganda sayt **Lucide ikonka + gradient** placeholder ishlatadi — bu normal.
 
@@ -102,12 +102,12 @@ Hozir rasmlar bo‘lmaganda sayt **Lucide ikonka + gradient** placeholder ishlat
 
 ## 7. Muammo bo‘lsa
 
-| Muammo | Tekshirish |
-|--------|------------|
-| Email kelmaydi | Vercel env: `RESEND_API_KEY`, `CONTACT_EMAIL`, `RESEND_FROM_EMAIL`; Resend dashboardda “Logs” |
-| Chat javob bermaydi | `GEMINI_API_KEY` Vercelda; billing / quota AI Studio |
-| Noto‘g‘ri URL sitemapda | `NEXT_PUBLIC_SITE_URL` ni yangilang, redeploy |
-| Build CI da yiqiladi | `npm run type-check`, `npm run lint`, `npm run build` ni mahalliy ishga tushiring |
+| Muammo                  | Tekshirish                                                                                    |
+| ----------------------- | --------------------------------------------------------------------------------------------- |
+| Email kelmaydi          | Vercel env: `RESEND_API_KEY`, `CONTACT_EMAIL`, `RESEND_FROM_EMAIL`; Resend dashboardda “Logs” |
+| Chat javob bermaydi     | `GROQ_API_KEY` Vercelda; billing / quota AI Studio                                            |
+| Noto‘g‘ri URL sitemapda | `NEXT_PUBLIC_SITE_URL` ni yangilang, redeploy                                                 |
+| Build CI da yiqiladi    | `npm run type-check`, `npm run lint`, `npm run build` ni mahalliy ishga tushiring             |
 
 ---
 

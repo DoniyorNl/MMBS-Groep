@@ -14,20 +14,20 @@ Brauzer: [http://localhost:3000](http://localhost:3000) — `/nl` ga yo‘naltir
 
 ## Skriptlar
 
-| Skript | Vazifasi |
-|--------|----------|
-| `npm run dev` | Dev server (Turbopack) |
-| `npm run build` | Production build |
-| `npm run start` | Builddan keyin server |
-| `npm run type-check` | TypeScript |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier |
+| Skript               | Vazifasi               |
+| -------------------- | ---------------------- |
+| `npm run dev`        | Dev server (Turbopack) |
+| `npm run build`      | Production build       |
+| `npm run start`      | Builddan keyin server  |
+| `npm run type-check` | TypeScript             |
+| `npm run lint`       | ESLint                 |
+| `npm run format`     | Prettier               |
 
 ## Deployment va sizning qadamlaringiz
 
 **To‘liq qo‘llanma:** [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md)
 
-Qisqacha: Vercelga ulang, **Environment Variables** ni qo‘shing (`RESEND_API_KEY`, `CONTACT_EMAIL`, `GEMINI_API_KEY`, `NEXT_PUBLIC_SITE_URL`), redeploy qiling.
+Qisqacha: Vercelga ulang, **Environment Variables** ni qo‘shing (`RESEND_API_KEY`, `CONTACT_EMAIL`, `GROQ_API_KEY`, `NEXT_PUBLIC_SITE_URL`), redeploy qiling.
 
 ## Struktura (qisqa)
 
